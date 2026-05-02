@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Dulce Amorito Bakery | Pasteles Artesanales · Saint Cloud, FL</title>
+<meta name="description" content="Pasteles personalizados hechos con amor en Saint Cloud, FL. Ordena por WhatsApp."/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+<style>
+  @keyframes bannerShift { 0%{background-position:0% 50%} 100%{background-position:300% 50%} }
+  body { padding-top: 108px; }
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT BANNER -->
+<div id="top-banner" style="background:linear-gradient(90deg,#c0263d,#e07898,#c9973b,#c0263d);background-size:300% 100%;animation:bannerShift 6s linear infinite;padding:.6rem 0;overflow:hidden;white-space:nowrap;position:fixed;top:0;left:0;right:0;z-index:1001;">
+  <div class="banner-track">
+    <span style="color:#fff;font-size:.78rem;font-weight:600;letter-spacing:.06em;">🌸 Bienvenido a Dulce Amorito — donde cada pastel se hace con amor y dedicación</span>
+    <span style="color:#fff;font-size:.78rem;font-weight:600;letter-spacing:.06em;"> &nbsp;·&nbsp; </span>
+    <span style="color:#fff;font-size:.78rem;font-weight:600;letter-spacing:.06em;">✨ Tu felicidad es nuestra mayor recompensa · Atención personalizada garantizada</span>
+    <span style="color:#fff;font-size:.78rem;font-weight:600;letter-spacing:.06em;"> &nbsp;·&nbsp; </span>
+    <span style="color:#fff;font-size:.78rem;font-weight:600;letter-spacing:.06em;">🎂 Pasteles 100% artesanales, hechos desde cero con los mejores ingredientes</span>
+    <span style="color:#fff;font-size:.78rem;font-weight:600;letter-spacing:.06em;"> &nbsp;·&nbsp; </span>
+    <span style="color:#fff;font-size:.78rem;font-weight:600;letter-spacing:.06em;">💬 Con amabilidad y amor te daremos la mejor atención</span>
+    <span style="color:#fff;font-size:.78rem;font-weight:600;letter-spacing:.06em;"> &nbsp;·&nbsp; </span>
+    <span style="color:#fff;font-size:.78rem;font-weight:600;letter-spacing:.06em;">🚗 Delivery & Pickup · Saint Cloud · Kissimmee · Orlando</span>
+    <span style="color:#fff;font-size:.78rem;font-weight:600;letter-spacing:.06em;"> &nbsp;·&nbsp; </span>
+    <span style="color:#fff;font-size:.78rem;font-weight:600;letter-spacing:.06em;">🌸 Bienvenido a Dulce Amorito — donde cada pastel se hace con amor y dedicación</span>
+    <span style="color:#fff;font-size:.78rem;font-weight:600;letter-spacing:.06em;"> &nbsp;·&nbsp; </span>
+    <span style="color:#fff;font-size:.78rem;font-weight:600;letter-spacing:.06em;">✨ Tu felicidad es nuestra mayor recompensa · Atención personalizada garantizada</span>
+    <span style="color:#fff;font-size:.78rem;font-weight:600;letter-spacing:.06em;"> &nbsp;·&nbsp; </span>
+    <span style="color:#fff;font-size:.78rem;font-weight:600;letter-spacing:.06em;">🎂 Pasteles 100% artesanales, hechos desde cero con los mejores ingredientes</span>
+    <span style="color:#fff;font-size:.78rem;font-weight:600;letter-spacing:.06em;"> &nbsp;·&nbsp; </span>
+    <span style="color:#fff;font-size:.78rem;font-weight:600;letter-spacing:.06em;">💬 Con amabilidad y amor te daremos la mejor atención</span>
+    <span style="color:#fff;font-size:.78rem;font-weight:600;letter-spacing:.06em;"> &nbsp;·&nbsp; </span>
+    <span style="color:#fff;font-size:.78rem;font-weight:600;letter-spacing:.06em;">🚗 Delivery & Pickup · Saint Cloud · Kissimmee · Orlando</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="main-nav" style="top:36px;">
+  <div class="nav-logo"><img src="logo.png" alt="Dulce Amorito Bakery" onerror="this.outerHTML='<span style=font-family:Cormorant Garamond,serif;font-size:1.5rem;font-weight:600;color:#2a1a22>Dulce <span style=color:#c0263d>Amorito</span></span>'"/></div>
+  <ul class="nav-links">
+    <li><a href="#catalog">Menú</a></li>
+    <li><a href="#configurator">Crea tu Torta</a></li>
+    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#about">Nosotros</a></li>
+    <li><a href="#testimonials">Reseñas</a></li>
+    <li><a href="#contact">Contacto</a></li>
+  </ul>
+  <a href="https://wa.me/14073122435" target="_blank" class="nav-cta">🛒 Ordenar</a>
+  <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+</nav>
+
+<!-- HERO -->
+<section id="hero" style="position:relative;background-image:url('fondos imagenes/IMG_9573.JPG');background-size:cover;background-position:center;background-attachment:fixed;">
+  <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(42,26,34,0.82) 0%,rgba(192,38,61,0.45) 100%);z-index:0;"></div>
+  <div class="hero-blob blob1"></div>
+  <div class="hero-blob blob2"></div>
+  <div class="hero-text" style="position:relative;z-index:1;">
+    <span class="hero-badge" style="background:rgba(201,151,59,0.2);border-color:rgba(201,151,59,0.5);color:#f5d080;">✨ 6 años endulzando Saint Cloud, FL</span>
+    <h1 class="hero-title" style="color:#fff;text-shadow:0 2px 20px rgba(0,0,0,0.4);">Pasteles que<br/><em>cuentan tu</em><br/>historia</h1>
+    <p class="hero-sub" style="color:rgba(255,255,255,0.9);">Tortas artesanales 100% personalizadas, hechas desde cero con los mejores ingredientes y mucho amor. Pickup & delivery en Saint Cloud, Kissimmee y Orlando.</p>
+    <div class="hero-btns">
+      <a href="#configurator" class="btn-primary">🎂 Diseña tu Torta</a>
+      <a href="#catalog" class="btn-outline">📋 Ver Menú</a>
+    </div>
+    <div class="hero-stats" style="position:relative;z-index:1;">
+      <div><span class="stat-num" style="color:#f5d080;">6+</span><span class="stat-label" style="color:rgba(255,255,255,0.8);">Años de experiencia</span></div>
+      <div><span class="stat-num" style="color:#f5d080;">500+</span><span class="stat-label" style="color:rgba(255,255,255,0.8);">Tortas creadas</span></div>
+      <div><span class="stat-num" style="color:#f5d080;">5★</span><span class="stat-label" style="color:rgba(255,255,255,0.8);">Rating</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- BANNER STRIP -->
+<div class="promo-banner">
+  <div class="promo-inner">
+    <div class="promo-item"><span>🎂</span> Tortas personalizadas desde $45</div>
+    <div class="promo-item"><span>🚚</span> Delivery & Pickup disponible</div>
+    <div class="promo-item"><span>✨</span> 100% artesanal, sin mezclas</div>
+    <div class="promo-item"><span>📲</span> Ordena por WhatsApp</div>
+  </div>
+</div>
+
+<!-- CATALOG -->
+<section id="catalog" style="position:relative;background-image:url('fondos imagenes/IMG_9581.JPG');background-size:cover;background-position:center;background-attachment:fixed;">
+  <div style="position:absolute;inset:0;background:rgba(253,243,235,0.88);z-index:0;pointer-events:none;"></div>
+  <div style="position:relative;z-index:1;">
+  <div class="section-header">
+    <p class="section-tag">Menú Completo</p>
+    <h2 class="section-title">Nuestras <em>delicias</em></h2>
+    <p class="section-sub">Precios fijos, ingredientes premium, todo hecho desde cero.</p>
+  </div>
+  <div class="catalog-tabs">
+    <button class="tab-btn active" onclick="showTab('artisan',this)">🍰 Artisan Desserts</button>
+    <button class="tab-btn" onclick="showTab('individual',this)">🍮 Postres Individuales</button>
+    <button class="tab-btn" onclick="showTab('tortas',this)">🎂 Tortas Personalizadas</button>
+  </div>
+  <div class="catalog-grid" id="catalog-grid"></div>
+  </div>
+</section>
+
+<!-- CONFIGURATOR -->
+<section id="configurator" style="position:relative;background-image:url('fondos imagenes/IMG_9573.JPG');background-size:cover;background-position:center;background-attachment:fixed;">
+  <div style="position:absolute;inset:0;background:rgba(42,26,34,0.82);z-index:0;pointer-events:none;"></div>
+  <div style="position:relative;z-index:1;width:100%;">
+  <div class="config-wrapper">
+    <div class="section-header">
+      <p class="section-tag">✨ Personaliza tu pedido</p>
+      <h2 class="section-title">Arma tu torta <em>ideal</em></h2>
+      <p class="section-sub">Elige cada detalle — cuando termines, te enviamos todo por WhatsApp.</p>
+    </div>
+    <div class="config-layout">
+      <div class="config-steps">
+
+        <div class="config-step active" id="cs1">
+          <div class="step-hd" onclick="toggleStep(1)">
+            <div class="step-num">1</div>
+            <span class="step-label">🎂 Tamaño</span>
+            <span class="step-val" id="sv1">Elige…</span>
+          </div>
+          <div class="step-opts">
+            <button class="chip" onclick="pickSize(this,'6 pulgadas – 8 pers.',45)">🍰 6" – 8 pers. · $45</button>
+            <button class="chip" onclick="pickSize(this,'8 pulgadas – 15 pers.',70)">🎂 8" – 15 pers. · $70</button>
+            <button class="chip" onclick="pickSize(this,'10 pulgadas – 30 pers.',95)">🎂 10" – 30 pers. · $95</button>
+            <button class="chip" onclick="pickSize(this,'2 Pisos (30+ pers.)',145)">🏰 2 Pisos · $145+</button>
+          </div>
+        </div>
+
+        <div class="config-step" id="cs2">
+          <div class="step-hd" onclick="toggleStep(2)">
+            <div class="step-num">2</div>
+            <span class="step-label">🍰 Sabor de la masa</span>
+            <span class="step-val" id="sv2">Elige…</span>
+          </div>
+          <div class="step-opts">
+            <button class="chip" onclick="pick(this,'flavor','sv2')">🍦 Vainilla</button>
+            <button class="chip" onclick="pick(this,'flavor','sv2')">🍫 Chocolate</button>
+            <button class="chip" onclick="pick(this,'flavor','sv2')">❤️ Red Velvet</button>
+            <button class="chip" onclick="pick(this,'flavor','sv2')">🥥 Coco</button>
+            <button class="chip" onclick="pick(this,'flavor','sv2')">🌰 Almendra</button>
+            <button class="chip" onclick="pick(this,'flavor','sv2')">🍍 Piña</button>
+          </div>
+        </div>
+
+        <div class="config-step" id="cs3">
+          <div class="step-hd" onclick="toggleStep(3)">
+            <div class="step-num">3</div>
+            <span class="step-label">🍯 Relleno</span>
+            <span class="step-val" id="sv3">Elige…</span>
+          </div>
+          <div class="step-opts">
+            <button class="chip" onclick="pick(this,'filling','sv3')">🥛 Pastry Cream</button>
+            <button class="chip" onclick="pick(this,'filling','sv3')">☁️ Chantilly</button>
+            <button class="chip" onclick="pick(this,'filling','sv3')">🍫 Chocolate Ganache</button>
+            <button class="chip" onclick="pick(this,'filling','sv3')">🌰 Nutella</button>
+            <button class="chip" onclick="pick(this,'filling','sv3')">🍮 Dulce de Leche</button>
+            <button class="chip" onclick="pick(this,'filling','sv3')">🍓 Crema y Fresas</button>
+            <button class="chip" onclick="pick(this,'filling','sv3')">🍋 Lemon Curd</button>
+            <button class="chip" onclick="pick(this,'filling','sv3')">🟡 Maracuyá</button>
+            <button class="chip" onclick="pick(this,'filling','sv3')">🥭 Mango</button>
+            <button class="chip" onclick="pick(this,'filling','sv3')">🍍 Piña</button>
+          </div>
+        </div>
+
+        <div class="config-step" id="cs4">
+          <div class="step-hd" onclick="toggleStep(4)">
+            <div class="step-num">4</div>
+            <span class="step-label">🎨 Decoración</span>
+            <span class="step-val" id="sv4">Elige…</span>
+          </div>
+          <div class="step-opts">
+            <button class="chip" onclick="pick(this,'deco','sv4')">🌺 Lambeth Clásico</button>
+            <button class="chip" onclick="pick(this,'deco','sv4')">🌸 Flores Naturales</button>
+            <button class="chip" onclick="pick(this,'deco','sv4')">⬜ Minimalista</button>
+            <button class="chip" onclick="pick(this,'deco','sv4')">✨ Gold Leaf</button>
+            <button class="chip" onclick="pick(this,'deco','sv4')">🎀 Infantil</button>
+            <button class="chip" onclick="pick(this,'deco','sv4')">💕 Romántico</button>
+          </div>
+        </div>
+
+        <div class="config-step" id="cs5">
+          <div class="step-hd" onclick="toggleStep(5)">
+            <div class="step-num">5</div>
+            <span class="step-label">📅 Fecha del evento</span>
+            <span class="step-val" id="sv5">Elige…</span>
+          </div>
+          <div class="step-opts" style="flex-direction:column">
+            <input type="date" id="event-date" style="padding:.6rem 1rem;border:1.5px solid rgba(192,38,61,.25);border-radius:10px;font-family:inherit;font-size:.88rem;max-width:240px" onchange="pickDate(this.value)"/>
+            <p style="font-size:.72rem;color:var(--mid);margin-top:.4rem">📌 Mínimo 5 días de anticipación</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- PREVIEW -->
+      <div class="preview-panel">
+        <p class="preview-title">Vista previa de tu pedido</p>
+        <div class="cake-display" id="cake-emoji">🎂</div>
+        <div class="summary-rows">
+          <div class="sum-row"><span class="sum-k">Tamaño</span><span class="sum-v" id="ps-size">—</span></div>
+          <div class="sum-row"><span class="sum-k">Sabor</span><span class="sum-v" id="ps-flavor">—</span></div>
+          <div class="sum-row"><span class="sum-k">Relleno</span><span class="sum-v" id="ps-filling">—</span></div>
+          <div class="sum-row"><span class="sum-k">Decoración</span><span class="sum-v" id="ps-deco">—</span></div>
+          <div class="sum-row"><span class="sum-k">Fecha</span><span class="sum-v" id="ps-date">—</span></div>
+          <div class="sum-row sum-total"><span class="sum-k">Total estimado</span><span class="sum-v" id="ps-total">$0</span></div>
+        </div>
+        <button class="btn-wa" onclick="orderCake()">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Pedir por WhatsApp
+        </button>
+        <p class="btn-wa-note">Se abrirá WhatsApp con tu pedido completo</p>
+        <button class="btn-add" style="width:100%;margin-top:.6rem;border-radius:50px;padding:.7rem" onclick="addCakeToCart()">+ Agregar al carrito</button>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div>
+    <p class="section-tag">Nuestra Historia</p>
+    <h2 class="section-title">Hecha con <em>amor</em> desde el primer pastel</h2>
+    <p class="section-sub">Todo comenzó cuando mi hijo cumplió su primer año. Sin saber nada de repostería, decidí hacer su torta — y quedó un cake de 2 pisos, hermoso y delicioso. Desde ese día, los invitados empezaron a pedirme pasteles. Ese primer cake, lleno de errores, es el que más orgullo me da haber hecho.</p>
+    <div class="about-feats">
+      <div class="feat"><span class="feat-icon">🌸</span><div><div class="feat-title">100% desde cero</div><div class="feat-desc">Nunca usamos mezclas ni ingredientes pre-preparados. Todo es artesanal.</div></div></div>
+      <div class="feat"><span class="feat-icon">✨</span><div><div class="feat-title">Ingredientes premium</div><div class="feat-desc">Solo los mejores ingredientes para garantizar sabores excepcionales.</div></div></div>
+      <div class="feat"><span class="feat-icon">🚗</span><div><div class="feat-title">Pickup & Delivery</div><div class="feat-desc">Saint Cloud, Kissimmee y Orlando. Mínimo 5 días de anticipación.</div></div></div>
+      <div class="feat"><span class="feat-icon">💬</span><div><div class="feat-title">Bilingüe · EN / ES</div><div class="feat-desc">Atendemos en español e inglés, Lun–Dom 7am–7pm.</div></div></div>
+    </div>
+  </div>
+  <!-- CEO PHOTO CARD -->
+  <div class="ceo-card">
+    <div class="ceo-bg" style="background:#fdf3eb;"></div>
+    <div class="ceo-photo-wrap">
+      <img src="ceo de dulce amorito/37ACC06F-3B54-4B87-80C8-CE8DF67DF57D.PNG" alt="Alejandra — Fundadora de Dulce Amorito" class="ceo-photo" onerror="this.outerHTML='<div style=font-size:6rem;text-align:center>👩‍🍳</div>'"/>
+    </div>
+    <div class="ceo-info">
+      <div class="ceo-name" style="color:#2a1a22;">Alejandra</div>
+      <div class="ceo-title" style="color:#c0263d;">Fundadora</div>
+      <div class="ceo-badge" style="background:rgba(192,38,61,0.1);border-color:rgba(192,38,61,0.3);color:#c0263d;">✨ Dulce Amorito Bakery</div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="galeria" style="background:#fff5f0;padding:3rem 0 0;">
+  <div class="section-header" style="padding:0 6% 2rem;">
+    <p class="section-tag">Galería</p>
+    <h2 class="section-title">Nuestras <em>creaciones</em></h2>
+    <p class="section-sub">Cada pastel, hecho desde cero con amor ✨</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:4px;">
+    <div style="overflow:hidden;aspect-ratio:1;"><img src="imagenes/dulce-1.png" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"/></div>
+    <div style="overflow:hidden;aspect-ratio:1;"><img src="imagenes/dulce-2.png" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"/></div>
+    <div style="overflow:hidden;aspect-ratio:1;"><img src="imagenes/dulce-3.png" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"/></div>
+    <div style="overflow:hidden;aspect-ratio:1;"><img src="imagenes/dulce-4.png" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"/></div>
+    <div style="overflow:hidden;aspect-ratio:1;"><img src="imagenes/dulce-5.png" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"/></div>
+    <div style="overflow:hidden;aspect-ratio:1;"><img src="imagenes/dulce-6.png" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"/></div>
+    <div style="overflow:hidden;aspect-ratio:1;"><img src="imagenes/dulce-7.png" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"/></div>
+    <div style="overflow:hidden;aspect-ratio:1;"><img src="imagenes/dulce-8.png" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"/></div>
+    <div style="overflow:hidden;aspect-ratio:1;"><img src="imagenes/dulce-9.png" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"/></div>
+    <div style="overflow:hidden;aspect-ratio:1;"><img src="imagenes/dulce-10.png" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"/></div>
+    <div style="overflow:hidden;aspect-ratio:1;"><img src="imagenes/dulce-11.png" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"/></div>
+    <div style="overflow:hidden;aspect-ratio:1;"><img src="imagenes/dulce-12.png" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"/></div>
+    <div style="overflow:hidden;aspect-ratio:1;"><img src="imagenes/dulce-13.png" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"/></div>
+    <div style="overflow:hidden;aspect-ratio:1;"><img src="imagenes/dulce-14.png" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"/></div>
+    <div style="overflow:hidden;aspect-ratio:1;"><img src="imagenes/dulce-15.png" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"/></div>
+    <div style="overflow:hidden;aspect-ratio:1;"><img src="imagenes/dulce-16.png" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"/></div>
+    <div style="overflow:hidden;aspect-ratio:1;"><img src="imagenes/dulce-17.png" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"/></div>
+    <div style="overflow:hidden;aspect-ratio:1;"><img src="imagenes/dulce-18.png" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"/></div>
+    <div style="overflow:hidden;aspect-ratio:1;"><img src="imagenes/dulce-19.png" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"/></div>
+    <div style="overflow:hidden;aspect-ratio:1;"><img src="imagenes/dulce-23.png" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"/></div>
+  </div>
+</section>
+
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-header">
+    <p class="section-tag">Reseñas</p>
+    <h2 class="section-title">Lo que dicen <em>nuestros clientes</em></h2>
+  </div>
+  <div class="testi-grid" id="testi-grid"></div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div>
+    <p class="section-tag">Contáctanos</p>
+    <h2 class="section-title">¿Lista para tu <em>pedido?</em></h2>
+    <p class="section-sub">Escríbenos y con gusto te ayudamos a crear el pastel de tus sueños.</p>
+    <div class="contact-items">
+      <div class="c-item"><div class="c-icon">📱</div><a href="https://wa.me/14073122435" target="_blank">(407) 312-2435 · WhatsApp</a></div>
+      <div class="c-item"><div class="c-icon">📧</div><a href="mailto:dulceamorito@gmail.com">dulceamorito@gmail.com</a></div>
+      <div class="c-item"><div class="c-icon">📍</div><span>Saint Cloud, FL · Pickup & Delivery</span></div>
+      <div class="c-item"><div class="c-icon">🕐</div><span>Lun–Dom 7am – 7pm</span></div>
+      <div class="c-item"><div class="c-icon">📸</div><a href="https://instagram.com/dulceamorito" target="_blank">@dulceamorito</a></div>
+    </div>
+  </div>
+  <div class="contact-form">
+    <div class="form-group">
+      <label>Tu nombre</label>
+      <input type="text" id="cf-name" placeholder="María González"/>
+    </div>
+    <div class="form-group">
+      <label>Tipo de evento</label>
+      <select id="cf-event" style="background:rgba(255,255,255,.07);border:1px solid rgba(192,38,61,.2);border-radius:10px;padding:.7rem 1rem;color:#fff;font-family:inherit;font-size:.88rem;width:100%">
+        <option value="">Selecciona…</option>
+        <option>Cumpleaños</option><option>Boda</option><option>Quinceañera</option>
+        <option>Baby Shower</option><option>Gender Reveal</option><option>Graduación</option>
+        <option>Aniversario</option><option>Evento corporativo</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Fecha del evento</label>
+      <input type="date" id="cf-date"/>
+    </div>
+    <div class="form-group">
+      <label>Mensaje</label>
+      <textarea id="cf-msg" placeholder="Cuéntanos sobre tu pedido — tipo de torta, sabor, cantidad de personas…"></textarea>
+    </div>
+    <button class="btn-submit" onclick="sendContact()">
+      📲 Enviar por WhatsApp
+    </button>
+  </div>
+</section>
+
+<footer>
+  Hecho con <span>❤️</span> por <span>Dulce Amorito Bakery</span> · Saint Cloud, FL 🎂<br/>
+  <small style="opacity:.6">© 2026 · Lun–Dom 7am–7pm · (407) 312-2435</small>
+</footer>
+
+<!-- CART FAB -->
+<button id="cart-fab" onclick="toggleCart()" title="Ver carrito">
+  🛒
+  <span id="cart-count" class="hidden">0</span>
+</button>
+
+<!-- WA FLOAT -->
+<a href="https://wa.me/14073122435" target="_blank" id="wa-float" title="WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- CART DRAWER -->
+<div class="overlay" id="overlay" onclick="toggleCart()"></div>
+<div id="cart-drawer">
+  <div class="cart-hd">
+    <h3>🛒 Tu Carrito</h3>
+    <button class="cart-close" onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cart-items"></div>
+  <div class="cart-footer">
+    <div class="cart-total-row">
+      <span>Total estimado</span>
+      <span class="cart-total-amt" id="cart-total">$0</span>
+    </div>
+    <button class="btn-checkout" onclick="checkoutWhatsApp()">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Pedir por WhatsApp
+    </button>
+    <button class="btn-clear" onclick="clearCart()">🗑️ Vaciar carrito</button>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
