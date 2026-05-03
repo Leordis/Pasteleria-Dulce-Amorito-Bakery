@@ -49,8 +49,8 @@ section{padding:5rem 6%}
 /* CATALOG */
 #catalog{background:#fff}
 .catalog-tabs{display:flex;justify-content:center;gap:.6rem;flex-wrap:wrap;margin-bottom:2.5rem}
-.tab-btn{background:transparent;border:1.5px solid var(--rose-mid);color:var(--rose);padding:.5rem 1.4rem;border-radius:50px;font-size:.82rem;font-weight:600;cursor:pointer;transition:all .2s;letter-spacing:.04em}
-.tab-btn:hover,.tab-btn.active{background:var(--rose);color:#fff;border-color:var(--rose)}
+.tab-btn{background:rgba(255,255,255,0.9);border:2px solid var(--rose-mid);color:var(--rose);padding:.7rem 1.8rem;border-radius:50px;font-size:.95rem;font-weight:700;cursor:pointer;transition:all .25s;letter-spacing:.04em;box-shadow:0 4px 15px rgba(192,38,61,0.1)}
+.tab-btn:hover,.tab-btn.active{background:linear-gradient(135deg,var(--rose),var(--rose-mid));color:#fff;border-color:transparent;box-shadow:0 8px 24px rgba(192,38,61,0.35);transform:translateY(-2px)}
 .catalog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.4rem}
 .product-card{background:var(--cream);border-radius:20px;overflow:hidden;box-shadow:0 4px 20px var(--shadow);transition:all .3s;cursor:pointer;border:1px solid rgba(192,38,61,.08)}
 .product-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px var(--shadow)}

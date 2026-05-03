@@ -78,12 +78,12 @@ const TESTIMONIALS = [
 
 // ── STATE ─────────────────────────────────────────
 let cart = JSON.parse(localStorage.getItem('da_cart') || '[]');
-let currentTab = 'artisan';
+let currentTab = 'tortas';
 let cakeOrder = { size:'', sizePrice:0, flavor:'', filling:'', deco:'', color:'', date:'' };
 
 // ── INIT ──────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
-  renderCatalog('artisan');
+  renderCatalog('tortas');
   renderTestimonials();
   updateCartUI();
   // Nav scroll
