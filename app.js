@@ -70,10 +70,10 @@ const PRODUCTS = {
 };
 
 const TESTIMONIALS = [
-  { text:'La torta de mi boda quedó exactamente como la soñé. Todos los invitados preguntaron quién la hizo — ¡los mejores pasteles de Saint Cloud!', name:'María G.', loc:'Saint Cloud, FL', color:'#c0263d' },
+  { text:'La torta de mi boda quedó exactamente como la soñé. Todos los invitados preguntaron quién la hizo — ¡los mejores pasteles de Orlando!', name:'María G.', loc:'Orlando, FL', color:'#c0263d' },
   { text:'Pedí cupcakes para el baby shower y fueron los mejores que he probado en mi vida. La presentación era preciosa y el sabor increíble.', name:'Kariela R.', loc:'Kissimmee, FL', color:'#c9973b' },
   { text:'El tres leches de frutas es una locura de rico. Ya lo pedí 3 veces para diferentes eventos. ¡Nunca decepciona!', name:'Paola M.', loc:'Orlando, FL', color:'#e07898' },
-  { text:'La torta de quinceañera de mi hija fue un sueño hecho realidad. El diseño, el sabor, la puntualidad — todo perfecto.', name:'Luciana V.', loc:'Saint Cloud, FL', color:'#c0263d' },
+  { text:'La torta de quinceañera de mi hija fue un sueño hecho realidad. El diseño, el sabor, la puntualidad — todo perfecto.', name:'Luciana V.', loc:'Orlando, FL', color:'#c0263d' },
 ];
 
 // ── STATE ─────────────────────────────────────────
