@@ -59,12 +59,13 @@ const PRODUCTS = {
     { id:'t2', name:'Torta de Boda', desc:'Elegancia y amor en cada capa · 2 o más pisos, decoración premium', emoji:'💒', badge:'Exclusiva',
       img:"bodas/7EF59F04-7AF3-4EA2-A5B7-491B6ECA9344.PNG", price:145, note:'Precio desde' },
     { id:'t3', name:'Torta de Quinceañera', desc:'Diseño soñado para el día más especial', emoji:'👑',
-      img:"quince a;os cake/IMG_9629.JPG", price:95, note:'Precio desde' },
+      img:"torta de quincea;era/IMG_9629.JPG", price:95, note:'Precio desde' },
     { id:'t4', name:'Torta de Cumpleaños', desc:'Personalizada con tus colores, temática y sabores favoritos', emoji:'🎉',
       img:"torta de cumplea'os/E7A91446-0112-4733-9F76-8190C6BACF87.PNG", price:45, note:'Precio desde' },
-    { id:'t5', name:'Gender Reveal Cake', desc:'Sorprende a todos con el color secreto dentro de la torta', emoji:'🎀', price:65, note:'Precio desde' },
+    { id:'t5', name:'Gender Reveal Cake', desc:'Sorprende a todos con el color secreto dentro de la torta', emoji:'🎀',
+      img:"gender reveal cake/IMG_9630.JPG", price:65, note:'Precio desde' },
     { id:'t6', name:'Dessert Table', desc:'Mesa completa de postres para tu evento especial', emoji:'✨',
-      img:"mesas de postre/mesa-postre.png", price:150, note:'Precio desde · consultar' },
+      img:"disert table/mesa-postre.png", price:150, note:'Precio desde · consultar' },
   ]
 };
 
@@ -78,7 +79,7 @@ const TESTIMONIALS = [
 // ── STATE ─────────────────────────────────────────
 let cart = JSON.parse(localStorage.getItem('da_cart') || '[]');
 let currentTab = 'artisan';
-let cakeOrder = { size:'', sizePrice:0, flavor:'', filling:'', deco:'', date:'' };
+let cakeOrder = { size:'', sizePrice:0, flavor:'', filling:'', deco:'', color:'', date:'' };
 
 // ── INIT ──────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
@@ -184,12 +185,23 @@ function pick(btn, field, svId) {
   // update preview
   const map = { flavor:'ps-flavor', filling:'ps-filling', deco:'ps-deco' };
   if (map[field]) document.getElementById(map[field]).textContent = val;
-  // emoji
-  if (field==='flavor') {
-    const em = { Vainilla:'🍦', Chocolate:'🍫', 'Red Velvet':'❤️', Coco:'🥥', Almendra:'🌰', Piña:'🍍' };
-    document.getElementById('cake-emoji').textContent = em[val.split(' ').pop()] || '🎂';
-  }
   openNextStep(parseInt(btn.closest('.config-step').id.replace('cs','')));
+}
+
+function pickColor(btn, name, hex) {
+  const parent = btn.closest('.step-opts');
+  parent.querySelectorAll('.color-dot').forEach(c => c.classList.remove('sel'));
+  btn.classList.add('sel');
+  cakeOrder.color = name;
+  document.getElementById('sv5').textContent = name;
+  document.getElementById('ps-color').textContent = name;
+  
+  // update SVG
+  document.getElementById('frosting-main').style.fill = hex;
+  document.getElementById('frosting-drip').style.fill = hex;
+  document.getElementById('frosting-drip').style.stroke = hex;
+  
+  openNextStep(5);
 }
 
 function pickDate(val) {
@@ -197,7 +209,7 @@ function pickDate(val) {
   const d = new Date(val+'T00:00:00');
   const fmt = d.toLocaleDateString('es-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
   cakeOrder.date = fmt;
-  document.getElementById('sv5').textContent = d.toLocaleDateString('es-US',{month:'short',day:'numeric',year:'numeric'});
+  document.getElementById('sv6').textContent = d.toLocaleDateString('es-US',{month:'short',day:'numeric',year:'numeric'});
   document.getElementById('ps-date').textContent = fmt;
 }
 
@@ -222,6 +234,7 @@ function orderCake() {
     `🍰 Sabor: ${o.flavor || 'Por definir'}\n` +
     `🍯 Relleno: ${o.filling || 'Por definir'}\n` +
     `🎨 Decoración: ${o.deco || 'Por definir'}\n` +
+    `🖌️ Color: ${o.color || 'Por definir'}\n` +
     `📅 Fecha del evento: ${o.date || 'Por definir'}\n` +
     `💰 Precio estimado: $${o.sizePrice}\n\n` +
     `¡Hola! Me gustaría confirmar este pedido 🌸`;
@@ -235,7 +248,7 @@ function addCakeToCart() {
     id: 'cake_'+Date.now(),
     name: 'Torta Personalizada',
     emoji: '🎂',
-    detail: `${o.size} · ${o.flavor||'—'} · ${o.filling||'—'}`,
+    detail: `${o.size} · ${o.flavor||'—'} · ${o.color||'—'}`,
     price: o.sizePrice
   });
   showToast('✅ Torta agregada al carrito');

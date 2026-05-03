@@ -70,6 +70,8 @@ section{padding:5rem 6%}
 
 /* CONFIGURATOR */
 #configurator{background:linear-gradient(160deg,var(--rose-light) 0%,var(--gold-light) 100%);position:relative}
+#configurator .section-title{color:#fff}
+#configurator .section-sub{color:rgba(255,255,255,.85)}
 .config-wrapper{max-width:1100px;margin:0 auto}
 .config-layout{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;margin-top:2rem}
 .config-steps{display:flex;flex-direction:column;gap:1.2rem}
@@ -191,6 +193,7 @@ footer span{color:var(--rose-mid)}
 
 /* RESPONSIVE */
 @media(max-width:900px){
+  #hero, #catalog, #configurator { background-attachment: scroll !important; background-position: center !important; }
   nav{padding:.8rem 5%}
   .nav-links{display:none}
   .menu-toggle{display:block}
