@@ -59,7 +59,7 @@ const PRODUCTS = {
     { id:'t2', name:'Torta de Boda', desc:'Elegancia y amor en cada capa · 2 o más pisos, decoración premium', emoji:'💒', badge:'Exclusiva',
       img:"bodas/7EF59F04-7AF3-4EA2-A5B7-491B6ECA9344.PNG", price:145, note:'Precio desde' },
     { id:'t3', name:'Torta de Quinceañera', desc:'Diseño soñado para el día más especial', emoji:'👑',
-      img:"torta de quincea;era/IMG_9629.JPG", price:95, note:'Precio desde' },
+      img:"torta de quincea;era/IMG_8143.jpg", price:95, note:'Precio desde' },
     { id:'t4', name:'Torta de Cumpleaños', desc:'Personalizada con tus colores, temática y sabores favoritos', emoji:'🎉',
       img:"torta de cumplea'os/E7A91446-0112-4733-9F76-8190C6BACF87.PNG", price:45, note:'Precio desde' },
     { id:'t5', name:'Gender Reveal Cake', desc:'Sorprende a todos con el color secreto dentro de la torta', emoji:'🎀',
