@@ -485,16 +485,37 @@ document.addEventListener('keydown', e => {
 });
 
 // ── Touch swipe navigation (mobile) ────────────────
-let _touchStartX = 0;
-document.getElementById('lightbox') && (() => {
+// _swipeHandled prevents the synthetic click (fired after touchend on mobile)
+// from accidentally closing the lightbox right after a swipe.
+let _touchStartX  = 0;
+let _touchStartY  = 0;
+let _swipeHandled = false;
+
+(function attachSwipe() {
   const lb = document.getElementById('lightbox');
+  if (!lb) return;
+
   lb.addEventListener('touchstart', e => {
-    _touchStartX = e.changedTouches[0].clientX;
+    _touchStartX  = e.changedTouches[0].clientX;
+    _touchStartY  = e.changedTouches[0].clientY;
+    _swipeHandled = false;
   }, { passive: true });
+
   lb.addEventListener('touchend', e => {
     const dx = e.changedTouches[0].clientX - _touchStartX;
-    if (Math.abs(dx) > 50) {   // minimum 50px swipe
+    const dy = e.changedTouches[0].clientY - _touchStartY;
+    // Only count as a swipe if horizontal movement clearly dominates vertical
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5 && _isGallery) {
+      _swipeHandled = true;
       galleryNav(dx < 0 ? 1 : -1);
+      // Reset flag after the synthetic click has had time to fire (~300ms)
+      setTimeout(() => { _swipeHandled = false; }, 400);
     }
   }, { passive: true });
 })();
+
+// Called by onclick on the lightbox backdrop — skips close if a swipe just happened
+function handleLightboxClick() {
+  if (_swipeHandled) return;
+  closeLightbox();
+}
