@@ -195,13 +195,29 @@ footer span{color:var(--rose-mid)}
 /* RESPONSIVE */
 @media(max-width:900px){
   #hero, #catalog, #configurator { background-attachment: scroll !important; background-position: center !important; }
-  nav{padding:.8rem 5%}
+  nav{ padding:.8rem 5%; top:36px; }
+  /* Smaller logo in nav on mobile so it doesn't crowd */
+  .nav-logo img{ height:56px; }
   .nav-links{display:none}
   .menu-toggle{display:block}
-  #hero,#about,#contact{grid-template-columns:1fr;padding-top:5rem}
+  /* Hero: keep single-column centered, same as desktop — only fix top padding */
+  #hero{
+    grid-template-columns:1fr;
+    padding-top: 6rem;
+    padding-bottom: 3rem;
+    text-align: center;
+  }
+  /* Keep hero subtitle centered on mobile */
+  .hero-sub{ margin-left:auto; margin-right:auto; }
+  .hero-btns{ justify-content:center; }
+  .hero-stats{ justify-content:center; gap:1.5rem; }
+  /* Logo in hero: slightly smaller on phones */
+  #hero img[alt="Dulce Amorito Bakery"]{
+    width: clamp(200px, 80vw, 340px) !important;
+  }
+  #about,#contact{grid-template-columns:1fr}
   .hero-img{order:-1}
   .hero-img-ring{width:260px;height:260px}
-  .hero-stats{gap:1.5rem}
   .config-layout{grid-template-columns:1fr}
   .preview-panel{position:static;order:-1;margin-bottom:1.5rem}
   .about-visual{display:none}

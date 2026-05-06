@@ -433,11 +433,7 @@ function openGallery(idx) {
   document.getElementById('lb-prev').style.display = 'flex';
   document.getElementById('lb-next').style.display = 'flex';
   lb.classList.add('active');
-  // iOS-safe scroll lock
-  _scrollY = window.scrollY;
-  document.body.style.position = 'fixed';
-  document.body.style.top      = `-${_scrollY}px`;
-  document.body.style.width    = '100%';
+  _lockScroll();
 }
 
 function openLightbox(src, caption) {
@@ -450,10 +446,22 @@ function openLightbox(src, caption) {
   document.getElementById('lb-prev').style.display = 'none';
   document.getElementById('lb-next').style.display = 'none';
   lb.classList.add('active');
-  _scrollY = window.scrollY;
-  document.body.style.position = 'fixed';
-  document.body.style.top      = `-${_scrollY}px`;
-  document.body.style.width    = '100%';
+  _lockScroll();
+}
+
+// Only lock scroll on desktop — on mobile the fixed lightbox already covers
+// the full viewport, so no lock is needed and we avoid the jarring jump on close.
+let _scrollLocked = false;
+function _lockScroll() {
+  if (window.innerWidth > 900) {
+    _scrollY = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top      = `-${_scrollY}px`;
+    document.body.style.width    = '100%';
+    _scrollLocked = true;
+  } else {
+    _scrollLocked = false;  // mobile: no lock, no jump
+  }
 }
 
 function galleryNav(dir) {
@@ -468,23 +476,26 @@ function galleryNav(dir) {
 
 function closeLightbox() {
   const lb = document.getElementById('lightbox');
-  lb.classList.remove('active'); // starts the 350ms opacity fade-out
+  lb.classList.remove('active');  // starts opacity fade-out
 
-  // Restore scroll WHILE the lightbox is still fading (at ~300ms it's almost invisible).
-  // This hides the scroll-position jump behind the fade so the user never sees it.
-  setTimeout(() => {
-    document.documentElement.style.scrollBehavior = 'auto'; // disable smooth scroll temporarily
-    document.body.style.position = '';
-    document.body.style.top      = '';
-    document.body.style.width    = '';
-    window.scrollTo({ top: _scrollY, behavior: 'instant' });
-  }, 300);
-
-  // Clean up after full fade completes
-  setTimeout(() => {
-    document.getElementById('lightbox-img').src = '';
-    document.documentElement.style.scrollBehavior = ''; // restore smooth scroll
-  }, 420);
+  if (_scrollLocked) {
+    // Desktop: restore scroll position hidden behind the fade animation
+    setTimeout(() => {
+      document.documentElement.style.scrollBehavior = 'auto';
+      document.body.style.position = '';
+      document.body.style.top      = '';
+      document.body.style.width    = '';
+      window.scrollTo({ top: _scrollY, behavior: 'instant' });
+    }, 300);
+    setTimeout(() => {
+      document.getElementById('lightbox-img').src = '';
+      document.documentElement.style.scrollBehavior = '';
+      _scrollLocked = false;
+    }, 420);
+  } else {
+    // Mobile: just fade out — no scroll lock was applied, so no jump ever happens
+    setTimeout(() => { document.getElementById('lightbox-img').src = ''; }, 380);
+  }
 }
 
 // ── Keyboard navigation ─────────────────────────────
