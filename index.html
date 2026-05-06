@@ -22,7 +22,7 @@
     }
 
     body {
-      padding-top: 108px;
+      padding-top: 120px;
     }
   </style>
 </head>
@@ -68,6 +68,7 @@
   <!-- NAV -->
   <nav id="main-nav" style="top:36px;">
     <div class="nav-logo"><img src="logo.png" alt="Dulce Amorito Bakery"
+        style="height:72px;width:auto;object-fit:contain;filter:drop-shadow(0 2px 8px rgba(192,38,61,0.18));"
         onerror="this.outerHTML='<span style=font-family:Cormorant Garamond,serif;font-size:1.5rem;font-weight:600;color:#2a1a22>Dulce <span style=color:#c0263d>Amorito</span></span>'" />
     </div>
     <ul class="nav-links">
@@ -90,14 +91,22 @@
     </div>
     <div class="hero-blob blob1"></div>
     <div class="hero-blob blob2"></div>
-    <div class="hero-text" style="position:relative;z-index:1;">
+    <div class="hero-text" style="position:relative;z-index:1;text-align:center;max-width:720px;">
+      <!-- LOGO prominente en el hero -->
+      <div style="display:flex;justify-content:center;margin-bottom:1.8rem;">
+        <img src="logo.png" alt="Dulce Amorito Bakery"
+          style="width:clamp(260px,45vw,480px);height:auto;object-fit:contain;
+                 filter:drop-shadow(0 8px 32px rgba(0,0,0,0.5)) drop-shadow(0 2px 8px rgba(192,38,61,0.4));
+                 animation:floatLogo 4s ease-in-out infinite;"
+          onerror="this.style.display='none'" />
+      </div>
       <span class="hero-badge"
         style="background:rgba(201,151,59,0.2);border-color:rgba(201,151,59,0.5);color:#f5d080;">✨ 6 años endulzando
         Orlando, FL</span>
       <h1 class="hero-title" style="color:#fff;text-shadow:0 2px 20px rgba(0,0,0,0.4);">Pasteles que<br /><em>cuentan
           tu</em><br />historia</h1>
       <p class="hero-sub" style="color:rgba(255,255,255,0.9);">Tortas artesanales 100% personalizadas, hechas desde cero
-        con los mejores ingredientes y mucho amor. Pickup & delivery en Orlando, Kissimmee y alrededores.</p>
+        con los mejores ingredientes y mucho amor. Pickup &amp; delivery en Orlando, Kissimmee y alrededores.</p>
       <div class="hero-btns">
         <a href="#configurator" class="btn-primary">🎂 Diseña tu Torta</a>
         <a href="#catalog" class="btn-outline">📋 Ver Menú</a>

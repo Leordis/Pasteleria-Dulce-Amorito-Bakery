@@ -468,12 +468,23 @@ function galleryNav(dir) {
 
 function closeLightbox() {
   const lb = document.getElementById('lightbox');
-  lb.classList.remove('active');
-  document.body.style.position = '';
-  document.body.style.top      = '';
-  document.body.style.width    = '';
-  window.scrollTo(0, _scrollY);
-  setTimeout(() => { document.getElementById('lightbox-img').src = ''; }, 380);
+  lb.classList.remove('active'); // starts the 350ms opacity fade-out
+
+  // Restore scroll WHILE the lightbox is still fading (at ~300ms it's almost invisible).
+  // This hides the scroll-position jump behind the fade so the user never sees it.
+  setTimeout(() => {
+    document.documentElement.style.scrollBehavior = 'auto'; // disable smooth scroll temporarily
+    document.body.style.position = '';
+    document.body.style.top      = '';
+    document.body.style.width    = '';
+    window.scrollTo({ top: _scrollY, behavior: 'instant' });
+  }, 300);
+
+  // Clean up after full fade completes
+  setTimeout(() => {
+    document.getElementById('lightbox-img').src = '';
+    document.documentElement.style.scrollBehavior = ''; // restore smooth scroll
+  }, 420);
 }
 
 // ── Keyboard navigation ─────────────────────────────
