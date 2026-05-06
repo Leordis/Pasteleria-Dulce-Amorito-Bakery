@@ -59,9 +59,9 @@ const PRODUCTS = {
     { id:'t2', name:'Torta de Boda', desc:'Elegancia y amor en cada capa · 2 o más pisos, decoración premium', emoji:'💒', badge:'Exclusiva',
       img:"bodas/7EF59F04-7AF3-4EA2-A5B7-491B6ECA9344.PNG", price:145, note:'Precio desde' },
     { id:'t3', name:'Torta de Quinceañera', desc:'Diseño soñado para el día más especial', emoji:'👑',
-      img:"torta de quincea;era/IMG_8143.jpg", price:95, note:'Precio desde' },
+      img:"torta de quinceañera/IMG_8143.jpg", price:95, note:'Precio desde' },
     { id:'t4', name:'Torta de Cumpleaños', desc:'Personalizada con tus colores, temática y sabores favoritos', emoji:'🎉',
-      img:"torta de cumplea'os/E7A91446-0112-4733-9F76-8190C6BACF87.PNG", price:45, note:'Precio desde' },
+      img:"tortas de cumpleaños/E7A91446-0112-4733-9F76-8190C6BACF87.PNG", price:45, note:'Precio desde' },
     { id:'t5', name:'Gender Reveal Cake', desc:'Sorprende a todos con el color secreto dentro de la torta', emoji:'🎀',
       img:"gender reveal cake/IMG_9630.JPG", price:65, note:'Precio desde' },
     { id:'t6', name:'Dessert Table', desc:'Mesa completa de postres para tu evento especial', emoji:'✨',
@@ -118,7 +118,7 @@ function buildCard(p, tab) {
   return `<div class="product-card">
     <div class="card-img">
       ${p.img
-        ? `<img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;border-radius:16px 16px 0 0;display:block;" onerror="this.outerHTML='<span>${p.emoji}</span>'"/>`
+        ? `<img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;border-radius:16px 16px 0 0;display:block;" onclick="openLightbox(${JSON.stringify(p.img).replace(/"/g,'&quot;')},${JSON.stringify(p.name).replace(/"/g,'&quot;')})" onerror="this.outerHTML='<span>${p.emoji}</span>'"/>`
         : `<span>${p.emoji}</span>`
       }
       ${p.badge ? `<span class="card-badge">${p.badge}</span>` : ''}
@@ -386,3 +386,35 @@ function showToast(msg) {
   document.body.appendChild(t);
   setTimeout(() => { t.style.opacity = '0'; setTimeout(() => t.remove(), 400); }, 2200);
 }
+
+// ── LIGHTBOX ──────────────────────────────────────
+let _scrollY = 0;
+
+function openLightbox(src, caption) {
+  const lb  = document.getElementById('lightbox');
+  const img = document.getElementById('lightbox-img');
+  const cap = document.getElementById('lightbox-caption');
+  img.src = src;
+  cap.textContent = caption || '';
+  lb.classList.add('active');
+  // iOS-safe scroll lock
+  _scrollY = window.scrollY;
+  document.body.style.position = 'fixed';
+  document.body.style.top = `-${_scrollY}px`;
+  document.body.style.width = '100%';
+}
+
+function closeLightbox() {
+  const lb = document.getElementById('lightbox');
+  lb.classList.remove('active');
+  // Restore scroll position (iOS fix)
+  document.body.style.position = '';
+  document.body.style.top = '';
+  document.body.style.width = '';
+  window.scrollTo(0, _scrollY);
+  // Clear src after animation
+  setTimeout(() => { document.getElementById('lightbox-img').src = ''; }, 380);
+}
+
+// Close on ESC key (desktop)
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
