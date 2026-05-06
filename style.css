@@ -421,6 +421,51 @@ footer span{color:var(--rose-mid)}
   border-color: var(--rose);
   transform: scale(1.12) rotate(90deg);
 }
+/* Prev / Next arrows */
+#lb-prev, #lb-next {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.12);
+  border: 1.5px solid rgba(255,255,255,.25);
+  color: #fff;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all .2s;
+  backdrop-filter: blur(8px);
+  z-index: 10000;
+  user-select: none;
+}
+#lb-prev { left: 1rem; }
+#lb-next { right: 1rem; }
+#lb-prev:hover, #lb-next:hover {
+  background: var(--rose);
+  border-color: var(--rose);
+  transform: translateY(-50%) scale(1.1);
+}
+/* Counter + footer */
+#lightbox-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: .7rem;
+}
+#lightbox-counter {
+  color: rgba(255,255,255,.5);
+  font-size: .8rem;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: .1em;
+}
+/* Fade transition on image swap */
+#lightbox-img { transition: opacity .15s ease; }
 /* zoom cursor on catalog card images */
 .card-img img {
   cursor: zoom-in;
