@@ -219,7 +219,7 @@ footer span{color:var(--rose-mid)}
   .hero-img{order:-1}
   .hero-img-ring{width:260px;height:260px}
   .config-layout{grid-template-columns:1fr}
-  .preview-panel{position:static;order:-1;margin-bottom:1.5rem}
+  .preview-panel{position:static;margin-top:2rem}
   .about-visual{display:none}
   .testi-grid{grid-template-columns:1fr}
   #cart-drawer{width:100%;max-width:100%;right:-100%}
