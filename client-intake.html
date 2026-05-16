@@ -876,9 +876,12 @@
       <div class="output-header">
         <div>
           <h3>📄 Resumen Generado</h3>
-          <p>Copia este texto y envíalo a tu diseñador web</p>
+          <p>Copia este texto o envíalo directamente por WhatsApp</p>
         </div>
-        <button class="btn-copy" id="copyBtn" onclick="copyOutput()">📋 Copiar Todo</button>
+        <div style="display:flex; gap:10px;">
+          <button class="btn-copy" id="copyBtn" onclick="copyOutput()">📋 Copiar Todo</button>
+          <button class="btn-copy" id="waBtn" onclick="sendToWhatsApp()" style="background:#25D366;border-color:#25D366;box-shadow:0 4px 14px rgba(37,211,102,0.3);">📲 Enviar por WhatsApp</button>
+        </div>
       </div>
       <pre id="output-text"></pre>
     </div>
@@ -1128,6 +1131,17 @@ ${val('web-notes')}
         btn.classList.remove('copied');
       }, 2500);
     });
+  }
+
+  // ── WHATSAPP ──
+  function sendToWhatsApp() {
+    const text = document.getElementById('output-text').textContent;
+    
+    // 👇 Puedes cambiar este número por tu número de WhatsApp
+    const whatsappNumber = "14079128935"; 
+    
+    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
+    window.open(url, '_blank');
   }
 
   updateProgress();
