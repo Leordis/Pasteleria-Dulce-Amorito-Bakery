@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Arma tu Pastel · Dulce Amorito</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Arial, sans-serif; background: #0e0b0e; color: #f0e8f0; min-height: 100vh; }
+
+  header {
+    background: #1a1018; border-bottom: 1px solid #3a2030;
+    padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between;
+  }
+  header h1 { font-size: 1.2rem; color: #e07898; }
+  header span { font-size: 0.75rem; color: #a08898; }
+
+  .app { display: grid; grid-template-columns: 300px 1fr; gap: 0; min-height: calc(100vh - 60px); }
+
+  /* LEFT */
+  .sidebar {
+    background: #150e14; border-right: 1px solid #2a1828;
+    padding: 1.5rem; overflow-y: auto;
+  }
+  .group { margin-bottom: 1.5rem; }
+  .group-title {
+    font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: #c9973b; margin-bottom: 0.6rem; font-weight: 700;
+  }
+  .chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .chip {
+    background: #1e1620; border: 1px solid #3a2030; border-radius: 6px;
+    padding: 0.4rem 0.8rem; font-size: 0.8rem; color: #a08898;
+    cursor: pointer; transition: all 0.15s;
+  }
+  .chip:hover { background: #2a1828; color: #f0e8f0; }
+  .chip.on { background: #3a1828; border-color: #e07898; color: #e07898; }
+
+  .colors { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .dot {
+    width: 32px; height: 32px; border-radius: 50%;
+    cursor: pointer; border: 2px solid transparent; transition: all 0.15s;
+  }
+  .dot:hover, .dot.on { border-color: #fff; transform: scale(1.15); }
+
+  /* RIGHT */
+  .main {
+    display: flex; flex-direction: column; align-items: center;
+    justify-content: center; padding: 2rem; gap: 1rem;
+  }
+
+  .img-wrap {
+    position: relative; width: 100%; max-width: 440px; aspect-ratio: 1;
+    border-radius: 16px; overflow: hidden; background: #1a1018;
+    border: 1px solid #3a2030;
+  }
+  #cake-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .overlay {
+    position: absolute; inset: 0; background: rgba(14,11,14,0.82);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 0.8rem;
+  }
+  .overlay.hidden { display: none; }
+  .spinner {
+    width: 48px; height: 48px; border: 2px solid #3a2030;
+    border-top-color: #e07898; border-radius: 50%;
+    animation: spin 0.9s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .ov-text { font-size: 0.8rem; color: #e07898; letter-spacing: 0.1em; }
+  .ov-sub { font-size: 0.68rem; color: #604858; }
+
+  .prompt-box {
+    max-width: 440px; width: 100%;
+    background: #150e14; border: 1px solid #2a1828; border-radius: 8px;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.7rem; color: #604858; line-height: 1.5;
+  }
+  .prompt-box b { color: #a08898; }
+
+  .actions { display: flex; gap: 0.7rem; max-width: 440px; width: 100%; }
+  .btn {
+    flex: 1; padding: 0.75rem; border-radius: 8px; border: none;
+    font-size: 0.85rem; font-weight: 700; cursor: pointer; transition: all 0.15s;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-regen { background: #3a1828; color: #e07898; border: 1px solid #e07898; }
+  .btn-wa { background: #25D366; color: #fff; }
+
+  @media (max-width: 700px) {
+    .app { grid-template-columns: 1fr; }
+    .sidebar { border-right: none; border-bottom: 1px solid #2a1828; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🎂 Arma tu Pastel · IA</h1>
+  <span>Dulce Amorito Bakery · Saint Cloud, FL</span>
+</header>
+
+<div class="app">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="group">
+      <div class="group-title">Tamaño</div>
+      <div class="chips">
+        <span class="chip on" data-field="size" data-val="small single tier" data-label="6&quot; · 8 pers." data-price="45" onclick="pick(this)">6" · 8 pers.</span>
+        <span class="chip" data-field="size" data-val="medium two tier" data-label="8&quot; · 15 pers." data-price="70" onclick="pick(this)">8" · 15 pers.</span>
+        <span class="chip" data-field="size" data-val="large single tier" data-label="10&quot; · 30 pers." data-price="95" onclick="pick(this)">10" · 30 pers.</span>
+        <span class="chip" data-field="size" data-val="grand three tier wedding" data-label="2 Pisos" data-price="145" onclick="pick(this)">🏰 2 Pisos</span>
+      </div>
+    </div>
+
+    <div class="group">
+      <div class="group-title">Sabor de la masa</div>
+      <div class="chips">
+        <span class="chip on" data-field="flavor" data-val="vanilla" data-label="Vainilla" onclick="pick(this)">🍦 Vainilla</span>
+        <span class="chip" data-field="flavor" data-val="chocolate" data-label="Chocolate" onclick="pick(this)">🍫 Chocolate</span>
+        <span class="chip" data-field="flavor" data-val="red velvet" data-label="Red Velvet" onclick="pick(this)">❤️ Red Velvet</span>
+        <span class="chip" data-field="flavor" data-val="coconut" data-label="Coco" onclick="pick(this)">🥥 Coco</span>
+        <span class="chip" data-field="flavor" data-val="almond" data-label="Almendra" onclick="pick(this)">🌰 Almendra</span>
+        <span class="chip" data-field="flavor" data-val="strawberry" data-label="Fresa" onclick="pick(this)">🍓 Fresa</span>
+      </div>
+    </div>
+
+    <div class="group">
+      <div class="group-title">Relleno</div>
+      <div class="chips">
+        <span class="chip on" data-field="filling" data-val="chantilly cream" data-label="Chantilly" onclick="pick(this)">☁️ Chantilly</span>
+        <span class="chip" data-field="filling" data-val="nutella" data-label="Nutella" onclick="pick(this)">🌰 Nutella</span>
+        <span class="chip" data-field="filling" data-val="chocolate ganache" data-label="Ganache" onclick="pick(this)">🍫 Ganache</span>
+        <span class="chip" data-field="filling" data-val="dulce de leche" data-label="Dulce de Leche" onclick="pick(this)">🍮 Dulce de Leche</span>
+        <span class="chip" data-field="filling" data-val="passion fruit cream" data-label="Maracuyá" onclick="pick(this)">🟡 Maracuyá</span>
+        <span class="chip" data-field="filling" data-val="strawberry cream" data-label="Fresa y Crema" onclick="pick(this)">🍓 Fresa</span>
+        <span class="chip" data-field="filling" data-val="lemon curd" data-label="Lemon Curd" onclick="pick(this)">🍋 Lemon Curd</span>
+        <span class="chip" data-field="filling" data-val="mango cream" data-label="Mango" onclick="pick(this)">🥭 Mango</span>
+      </div>
+    </div>
+
+    <div class="group">
+      <div class="group-title">Decoración</div>
+      <div class="chips">
+        <span class="chip on" data-field="deco" data-val="fresh flowers" data-label="Flores" onclick="pick(this)">🌸 Flores</span>
+        <span class="chip" data-field="deco" data-val="fresh fruits" data-label="Frutas" onclick="pick(this)">🍓 Frutas</span>
+        <span class="chip" data-field="deco" data-val="chocolate drip" data-label="Drip Choco" onclick="pick(this)">🍫 Drip</span>
+        <span class="chip" data-field="deco" data-val="gold leaf and pearls" data-label="Gold Leaf" onclick="pick(this)">✨ Gold Leaf</span>
+        <span class="chip" data-field="deco" data-val="macarons and meringue" data-label="Macarons" onclick="pick(this)">🎀 Macarons</span>
+        <span class="chip" data-field="deco" data-val="minimalist smooth frosting" data-label="Minimalista" onclick="pick(this)">⬜ Minimal</span>
+        <span class="chip" data-field="deco" data-val="birthday candles and sprinkles" data-label="Velas" onclick="pick(this)">🕯️ Velas</span>
+      </div>
+    </div>
+
+    <div class="group">
+      <div class="group-title">Color</div>
+      <div class="colors">
+        <div class="dot on" style="background:#fce4ec" data-val="white and blush pink" data-label="Blanco/Rosa" onclick="pickColor(this)" title="Rosa"></div>
+        <div class="dot" style="background:#f48fb1" data-val="pink" data-label="Rosa Fuerte" onclick="pickColor(this)" title="Rosa Fuerte"></div>
+        <div class="dot" style="background:#fff9c4" data-val="golden yellow cream" data-label="Dorado" onclick="pickColor(this)" title="Dorado"></div>
+        <div class="dot" style="background:#ce93d8" data-val="lavender purple" data-label="Lavanda" onclick="pickColor(this)" title="Lavanda"></div>
+        <div class="dot" style="background:#263238" data-val="dark black and silver" data-label="Negro/Plata" onclick="pickColor(this)" title="Negro"></div>
+        <div class="dot" style="background:#b3e5fc" data-val="baby blue and white" data-label="Azul Bebé" onclick="pickColor(this)" title="Azul"></div>
+        <div class="dot" style="background:#c8e6c9" data-val="sage green and white" data-label="Verde Sage" onclick="pickColor(this)" title="Verde"></div>
+        <div class="dot" style="background:#ff5252" data-val="red velvet crimson" data-label="Red Velvet" onclick="pickColor(this)" title="Rojo"></div>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <div class="img-wrap">
+      <img id="cake-img" src="" alt="Tu pastel"/>
+      <div class="overlay" id="overlay">
+        <div class="spinner"></div>
+        <div class="ov-text">Generando con IA…</div>
+        <div class="ov-sub" id="ov-sub">Esto toma ~15 segundos</div>
+      </div>
+    </div>
+
+    <div class="prompt-box">
+      <b>Prompt IA:</b> <span id="prompt-txt">—</span>
+    </div>
+
+    <div class="actions">
+      <button class="btn btn-regen" onclick="regenImage()">⚡ Nueva versión</button>
+      <button class="btn btn-wa" onclick="orderWA()">📲 Pedir por WhatsApp</button>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const WA = '14073122435';
+let timer = null;
+let loading = false;
+
+const cfg = {
+  size:    { val: 'small single tier',   label: '6" · 8 personas',  price: 45  },
+  flavor:  { val: 'vanilla',             label: 'Vainilla'                       },
+  filling: { val: 'chantilly cream',     label: 'Chantilly'                      },
+  deco:    { val: 'fresh flowers',       label: 'Flores'                         },
+  color:   { val: 'white and blush pink',label: 'Blanco/Rosa'                    },
+};
+
+function pick(el) {
+  const field = el.dataset.field;
+  document.querySelectorAll(`[data-field="${field}"]`).forEach(c => c.classList.remove('on'));
+  el.classList.add('on');
+  cfg[field] = { val: el.dataset.val, label: el.dataset.label, price: el.dataset.price };
+  if (field === 'size') document.title = `Pastel ${el.dataset.label} · Dulce Amorito`;
+  schedule();
+}
+
+function pickColor(el) {
+  document.querySelectorAll('.dot').forEach(d => d.classList.remove('on'));
+  el.classList.add('on');
+  cfg.color = { val: el.dataset.val, label: el.title };
+  schedule();
+}
+
+function buildPrompt() {
+  return [
+    'ultra realistic professional cake photography',
+    cfg.size.val + ' cake',
+    cfg.flavor.val + ' flavored sponge',
+    cfg.filling.val + ' filling',
+    cfg.deco.val + ' decoration',
+    cfg.color.val + ' color palette',
+    'white background',
+    'studio lighting',
+    'food photography',
+    '8k sharp'
+  ].join(', ');
+}
+
+function buildUrl(prompt, seed) {
+  return 'https://image.pollinations.ai/prompt/' +
+    encodeURIComponent(prompt) +
+    '?width=800&height=800&model=flux&nologo=true&seed=' + (seed || hash(prompt));
+}
+
+function hash(s) {
+  let h = 0;
+  for (let c of s) h = Math.imul(31, h) + c.charCodeAt(0) | 0;
+  return Math.abs(h) % 999983;
+}
+
+function schedule() {
+  clearTimeout(timer);
+  showLoading(true);
+  timer = setTimeout(genImage, 1000);
+}
+
+function regenImage() {
+  clearTimeout(timer);
+  genImage(true);
+}
+
+function genImage(forceNew) {
+  if (loading) return;
+  const prompt = buildPrompt();
+  const seed = forceNew ? Math.floor(Math.random() * 999983) : hash(prompt);
+  const url = buildUrl(prompt, seed);
+
+  document.getElementById('prompt-txt').textContent = prompt.split(',').slice(0,4).join(', ') + '…';
+  showLoading(true);
+  loading = true;
+
+  const img = document.getElementById('cake-img');
+  img.onload  = () => { showLoading(false); loading = false; };
+  img.onerror = () => {
+    document.getElementById('ov-sub').textContent = 'Reintentando…';
+    setTimeout(() => { img.src = url + '&r=' + Date.now(); }, 4000);
+  };
+  img.src = url;
+}
+
+function showLoading(show) {
+  document.getElementById('overlay').classList.toggle('hidden', !show);
+  if (show) document.getElementById('ov-sub').textContent = 'Esto toma ~15 segundos…';
+}
+
+function orderWA() {
+  const msg =
+    `🎂 *PEDIDO — Dulce Amorito Bakery*\n\n` +
+    `📏 Tamaño: ${cfg.size.label}\n` +
+    `🍰 Sabor: ${cfg.flavor.label}\n` +
+    `🍯 Relleno: ${cfg.filling.label}\n` +
+    `🎨 Decoración: ${cfg.deco.label}\n` +
+    `🎨 Color: ${cfg.color.label}\n` +
+    `💰 Precio estimado desde: $${cfg.size.price || 45}\n\n` +
+    `¡Hola! Me gustaría ordenar este pastel 🌸`;
+  const a = document.createElement('a');
+  a.href = `https://wa.me/${WA}?text=${encodeURIComponent(msg)}`;
+  a.target = '_blank'; document.body.appendChild(a); a.click(); document.body.removeChild(a);
+}
+
+// Start
+genImage();
+</script>
+</body>
+</html>
