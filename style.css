@@ -806,12 +806,31 @@ section {
 }
 
 .cart-close {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
+  background: rgba(139, 26, 26, 0.08);
+  border: 2px solid #8B1A1A;
+  color: #8B1A1A;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  font-weight: 700;
   cursor: pointer;
-  color: var(--mid);
-  line-height: 1
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.cart-close:hover {
+  background: #8B1A1A;
+  color: #fff;
+  transform: scale(1.1) rotate(90deg);
+}
+
+.cart-close:active {
+  transform: scale(0.9) rotate(90deg);
 }
 
 .cart-items {
