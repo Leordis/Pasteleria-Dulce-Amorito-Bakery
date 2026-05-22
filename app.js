@@ -126,10 +126,10 @@ function buildCard(p, tab) {
   const priceLabel = p.unit ? `<span>per ${p.unit}</span>` : (p.note ? `<span style="font-size:.68rem">${p.note}</span>` : '');
 
   return `<div class="product-card">
-    <div class="card-img">
+    <div class="card-img" style="background:#fdf8f5;display:flex;align-items:center;justify-content:center;">
       ${p.img
-        ? `<img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;border-radius:16px 16px 0 0;display:block;" onclick="openLightbox(${JSON.stringify(p.img).replace(/"/g,'&quot;')},${JSON.stringify(p.name).replace(/"/g,'&quot;')})" onerror="this.outerHTML='<span>${p.emoji}</span>'"/>`
-        : `<span>${p.emoji}</span>`
+        ? `<img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;border-radius:16px 16px 0 0;display:block;" onclick="openLightbox(${JSON.stringify(p.img).replace(/"/g,'&quot;')},${JSON.stringify(p.name).replace(/"/g,'&quot;')})" onerror="this.outerHTML='<div style=\\'text-align:center;padding:2rem;color:var(--gold-mid);font-family:serif;font-style:italic;\\'>Dulce Amorito</div>'"/>`
+        : `<div style='text-align:center;padding:2rem;color:var(--gold-mid);font-family:serif;font-style:italic;'>Dulce Amorito</div>`
       }
       ${p.badge ? `<span class="card-badge">${p.badge}</span>` : ''}
     </div>
