@@ -1397,7 +1397,7 @@ footer span {
 
   nav {
     padding: .8rem 5%;
-    top: 36px;
+    top: 0;
   }
 
   /* Smaller logo in nav on mobile so it doesn't crowd */
@@ -1483,51 +1483,7 @@ footer span {
   }
 }
 
-/* ── ANNOUNCEMENT BANNER ── */
-#top-banner {
-  background: linear-gradient(90deg, var(--rose-dark), var(--rose), var(--gold), var(--rose-dark));
-  background-size: 300% 100%;
-  animation: bannerShift 8s linear infinite;
-  padding: .55rem 0;
-  overflow: hidden;
-  white-space: nowrap;
-  position: relative;
-  z-index: 1000;
-}
 
-@keyframes bannerShift {
-  0% {
-    background-position: 0%
-  }
-
-  100% {
-    background-position: 300%
-  }
-}
-
-.banner-track {
-  display: inline-flex;
-  gap: 3rem;
-  animation: scrollBanner 30s linear infinite;
-}
-
-.banner-track span {
-  color: #fff;
-  font-size: .78rem;
-  font-weight: 600;
-  letter-spacing: .06em;
-  flex-shrink: 0;
-}
-
-@keyframes scrollBanner {
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(-50%);
-  }
-}
 
 /* ── PROMO STRIP ── */
 .promo-banner {
