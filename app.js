@@ -87,8 +87,18 @@ document.addEventListener('DOMContentLoaded', () => {
   renderTestimonials();
   updateCartUI();
   // Nav scroll
+  let lastScrollY = window.scrollY;
+  const nav = document.getElementById('main-nav');
   window.addEventListener('scroll', () => {
-    document.getElementById('main-nav').classList.toggle('scrolled', scrollY > 40);
+    const currentScrollY = window.scrollY;
+    nav.classList.toggle('scrolled', currentScrollY > 40);
+    
+    if (currentScrollY > lastScrollY && currentScrollY > 10) {
+      nav.classList.add('nav-hidden');
+    } else {
+      nav.classList.remove('nav-hidden');
+    }
+    lastScrollY = currentScrollY;
   });
 });
 

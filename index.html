@@ -39,24 +39,22 @@
 
   <!-- HERO -->
   <section id="hero"
-    style="position:relative;background-image:url('fotos de fondo/fondos imagenes/3558802C-34F5-407F-B25E-1779E4B5A472.PNG');background-size:cover;background-position:center;background-attachment:fixed;">
+    style="position:relative;background-image:url('fotos de fondo/fondos imagenes/hero-bg.PNG');background-size:cover;background-position:center;background-attachment:fixed;">
+    <canvas id="hero-particles" style="position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
     <div
-      style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(42,26,34,0.82) 0%,rgba(192,38,61,0.45) 100%);z-index:0;">
+      style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.1) 0%,rgba(139,26,26,0.2) 100%);z-index:0;">
     </div>
-    <div class="hero-blob blob1"></div>
-    <div class="hero-blob blob2"></div>
     <div class="hero-text" style="position:relative;z-index:1;text-align:center;max-width:720px;">
       <!-- LOGO prominente en el hero -->
       <div style="display:flex;justify-content:center;margin-bottom:1.8rem;">
-        <img src="logo.png" alt="Dulce Amorito Bakery" style="width:clamp(260px,45vw,480px);height:auto;object-fit:contain;
+        <img src="logo.png" alt="Dulce Amorito Bakery" style="width:clamp(140px,20vw,240px);height:auto;object-fit:contain;
                  filter:drop-shadow(0 8px 32px rgba(0,0,0,0.5)) drop-shadow(0 2px 8px rgba(192,38,61,0.4));
                  animation:floatLogo 4s ease-in-out infinite;" onerror="this.style.display='none'" />
       </div>
       <span class="hero-badge"
         style="background:rgba(201,151,59,0.2);border-color:rgba(201,151,59,0.5);color:#f5d080;">✨ 6+ years sweetening
         Orlando, FL</span>
-      <h1 class="hero-title" style="color:#fff;text-shadow:0 2px 20px rgba(0,0,0,0.4);">Cakes that<br /><em>tell
-          your</em><br />story</h1>
+
       <p class="hero-sub" style="color:rgba(255,255,255,0.9);">100% custom artisanal cakes, made from scratch
         with premium ingredients y mucho amor. Pickup &amp; delivery in Orlando, Kissimmee & surrounding areas.</p>
       <div class="hero-btns">
@@ -528,6 +526,72 @@
     <button id="lb-next" onclick="event.stopPropagation();galleryNav(1)" title="Next">&#8250;</button>
   </div>
 
+  <script>
+    // Golden Particles for Hero Section
+    (function initHeroParticles() {
+      const canvas = document.getElementById('hero-particles');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let particles = [];
+      const particleCount = window.innerWidth < 768 ? 40 : 80;
+      
+      function resize() {
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+      }
+      
+      window.addEventListener('resize', resize);
+      resize();
+
+      class Particle {
+        constructor() {
+          this.reset();
+          this.y = Math.random() * canvas.height; // initial random spread
+        }
+        reset() {
+          this.x = Math.random() * canvas.width;
+          this.y = -Math.random() * 100 - 10; // start above screen
+          this.size = Math.random() * 2.5 + 1.5; // 1.5px to 4px
+          this.speedY = Math.random() * 0.7 + 0.3; // fall downwards slowly
+          this.speedX = (Math.random() - 0.5) * 0.4; // slight base drift
+          this.swaySpeed = Math.random() * 0.02 + 0.01; // oscillation speed
+          this.swayAmount = Math.random() * 1.5 + 0.5; // oscillation width
+          this.angle = Math.random() * Math.PI * 2;
+          this.opacity = Math.random() * 0.6 + 0.2;
+        }
+        update() {
+          this.y += this.speedY;
+          this.angle += this.swaySpeed;
+          this.x += this.speedX + Math.sin(this.angle) * this.swayAmount;
+          
+          if (this.y > canvas.height + 20) {
+            this.reset();
+          }
+        }
+        draw() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(201, 168, 76, ${this.opacity})`; // #C9A84C
+          ctx.fill();
+        }
+      }
+
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => {
+          p.update();
+          p.draw();
+        });
+        requestAnimationFrame(animate);
+      }
+      
+      animate();
+    })();
+  </script>
   <script src="app.js"></script>
   <script src="//code.tidio.co/rjinjezfpw9x3vngbvohegwpabhbj2b7.js" async></script>
 </body>

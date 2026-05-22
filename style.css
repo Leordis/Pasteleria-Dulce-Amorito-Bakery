@@ -45,11 +45,15 @@ nav {
   background: rgba(253, 248, 245, .92);
   backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(192, 38, 61, .1);
-  transition: box-shadow .3s
+  transition: box-shadow .3s, transform 1s cubic-bezier(0.25, 1, 0.5, 1)
 }
 
 nav.scrolled {
   box-shadow: 0 4px 24px var(--shadow)
+}
+
+nav.nav-hidden {
+  transform: translateX(100%)
 }
 
 .nav-logo img {
@@ -210,45 +214,90 @@ nav.scrolled {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--rose), var(--rose-mid));
+  background: #8B1A1A;
   color: #fff;
-  border: none;
+  border: 2px solid #C9A84C;
   padding: .85rem 2rem;
   border-radius: 50px;
   font-size: .9rem;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 6px 20px rgba(192, 38, 61, .35);
+  box-shadow: 0 6px 20px rgba(139, 26, 26, 0.35);
   transition: all .25s;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
-  gap: .5rem
+  gap: .5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(201,168,76,0) 0%, rgba(201,168,76,0.4) 50%, rgba(201,168,76,0) 100%);
+  transform: skewX(-25deg);
+  transition: all 0.6s ease;
+}
+
+.btn-primary:hover::after {
+  left: 150%;
 }
 
 .btn-primary:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 28px rgba(192, 38, 61, .45)
+  box-shadow: 0 12px 28px rgba(139, 26, 26, 0.45);
 }
 
 .btn-outline {
   background: transparent;
-  color: var(--rose);
-  border: 2px solid var(--rose-mid);
+  color: #C9A84C;
+  border: 2px solid #C9A84C;
   padding: .85rem 2rem;
   border-radius: 50px;
   font-size: .9rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all .2s;
+  transition: all .3s ease;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
-  gap: .5rem
+  gap: .5rem;
 }
 
 .btn-outline:hover {
-  background: var(--rose-light)
+  background: rgba(201,168,76,0.15);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(201,168,76,0.2);
+}
+
+/* ── HERO TEXT ANIMATION ── */
+.hero-title-anim {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3.2rem, 8vw, 5.5rem);
+  line-height: 1.1;
+  margin-bottom: 1.2rem;
+  color: #fff;
+  text-shadow: 0 4px 30px rgba(0,0,0,0.6);
+}
+
+.anim-word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: wordFadeUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation-delay: var(--delay);
+}
+
+@keyframes wordFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hero-stats {
@@ -1436,10 +1485,7 @@ footer span {
     gap: 1.5rem;
   }
 
-  /* Logo in hero: slightly smaller on phones */
-  #hero img[alt="Dulce Amorito Bakery"] {
-    width: clamp(200px, 80vw, 340px) !important;
-  }
+
 
   #about,
   #contact {
