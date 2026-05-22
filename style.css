@@ -1228,11 +1228,20 @@ section {
   padding: 1.6rem;
   border: 1px solid rgba(192, 38, 61, .1);
   box-shadow: 0 4px 16px var(--shadow);
-  transition: transform .3s
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
 }
 
-.testi-card:hover {
-  transform: translateY(-4px)
+.testi-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.testi-card.show:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+  transition-delay: 0s !important;
 }
 
 .stars {

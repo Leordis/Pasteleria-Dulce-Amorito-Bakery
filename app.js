@@ -357,8 +357,8 @@ function sendContact() {
 
 // ── TESTIMONIALS ──────────────────────────────────
 function renderTestimonials() {
-  document.getElementById('testi-grid').innerHTML = TESTIMONIALS.map(t => `
-    <div class="testi-card">
+  document.getElementById('testi-grid').innerHTML = TESTIMONIALS.map((t, i) => `
+    <div class="testi-card" style="transition-delay: ${i * 150}ms">
       <div class="stars">★★★★★</div>
       <p class="testi-text">"${t.text}"</p>
       <div class="testi-author">
@@ -370,6 +370,18 @@ function renderTestimonials() {
       </div>
     </div>
   `).join('');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+      } else {
+        entry.target.classList.remove('show');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+  document.querySelectorAll('.testi-card').forEach(card => observer.observe(card));
 }
 
 // ── MOBILE MENU ───────────────────────────────────
