@@ -426,7 +426,7 @@ section {
 
 .tab-btn {
   background: rgba(255, 255, 255, 0.9);
-  border: 2px solid var(--rose-mid);
+  border: 2px solid rgba(192, 38, 61, .15);
   color: var(--rose);
   padding: .7rem 1.8rem;
   border-radius: 50px;
@@ -435,16 +435,41 @@ section {
   cursor: pointer;
   transition: all .25s;
   letter-spacing: .04em;
-  box-shadow: 0 4px 15px rgba(192, 38, 61, 0.1)
+  box-shadow: 0 4px 15px rgba(192, 38, 61, 0.1);
+  position: relative;
+  overflow: hidden;
 }
 
-.tab-btn:hover,
+.tab-btn::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -100%;
+  width: 100%;
+  height: 3px;
+  background: #C9A84C;
+  transition: left 0.4s ease;
+}
+
+.tab-btn:hover::after {
+  left: 0;
+}
+
+.tab-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(192, 38, 61, 0.2);
+}
+
 .tab-btn.active {
-  background: linear-gradient(135deg, var(--rose), var(--rose-mid));
+  background: #8B1A1A;
   color: #fff;
-  border-color: transparent;
+  border-color: #8B1A1A;
   box-shadow: 0 8px 24px rgba(192, 38, 61, 0.35);
-  transform: translateY(-2px)
+  transform: translateY(-2px);
+}
+
+.tab-btn.active::after {
+  display: none;
 }
 
 .catalog-grid {
@@ -458,14 +483,15 @@ section {
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 4px 20px var(--shadow);
-  transition: all .3s;
+  transition: all .3s ease;
   cursor: pointer;
-  border: 1px solid rgba(192, 38, 61, .08)
+  border: 1px solid rgba(192, 38, 61, .08);
 }
 
 .product-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 40px var(--shadow)
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
+  border-color: #C9A84C;
 }
 
 .card-img {
@@ -475,21 +501,71 @@ section {
   justify-content: center;
   font-size: 5rem;
   background: linear-gradient(135deg, var(--rose-light), var(--gold-light));
-  position: relative
+  position: relative;
+}
+
+.card-img::after {
+  content: '✦';
+  position: absolute;
+  inset: 0;
+  background: rgba(224, 120, 152, 0.25);
+  backdrop-filter: blur(2px);
+  color: #fff;
+  font-size: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.product-card:hover .card-img::after {
+  opacity: 1;
 }
 
 .card-badge {
   position: absolute;
   top: 12px;
   right: 12px;
-  background: var(--rose);
-  color: #fff;
+  background: #C9A84C;
+  color: #1a1a1a;
   font-size: .68rem;
   font-weight: 700;
-  padding: .25rem .7rem;
+  padding: .35rem .8rem;
   border-radius: 50px;
   letter-spacing: .06em;
-  text-transform: uppercase
+  text-transform: uppercase;
+  overflow: hidden;
+}
+
+.card-badge::before {
+  content: "✦ ";
+}
+
+.card-badge::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+  animation: shimmerBadge 3s infinite;
+}
+
+@keyframes shimmerBadge {
+  0% {
+    left: -100%;
+  }
+
+  20% {
+    left: 200%;
+  }
+
+  100% {
+    left: 200%;
+  }
 }
 
 .card-body {
@@ -520,7 +596,7 @@ section {
 .card-price {
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--rose)
+  color: #C9A84C;
 }
 
 .card-price span {
@@ -538,12 +614,35 @@ section {
   font-size: .8rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all .2s
+  transition: all .2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-add::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.5), transparent);
+  transition: none;
 }
 
 .btn-add:hover {
-  background: #a01e32;
-  transform: scale(1.05)
+  background: #8B1A1A;
+  transform: scale(1.05);
+}
+
+.btn-add:hover::after {
+  animation: shimmerBtn 0.8s forwards;
+}
+
+@keyframes shimmerBtn {
+  100% {
+    left: 200%;
+  }
 }
 
 /* SIZE SELECTOR on cards */
@@ -726,7 +825,7 @@ section {
   justify-content: center;
   border-bottom: 1px solid #C9A84C;
   border-radius: 12px 12px 0 0;
-  background: 
+  background:
     url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 5 L21 19 L35 20 L21 21 L20 35 L19 21 L5 20 L19 19 Z' fill='%23C9A84C' fill-opacity='0.15'/%3E%3Ccircle cx='10' cy='30' r='1' fill='%23C9A84C' fill-opacity='0.2'/%3E%3Ccircle cx='30' cy='10' r='1.5' fill='%23C9A84C' fill-opacity='0.3'/%3E%3C/svg%3E"),
     radial-gradient(circle at center, #ffffff 0%, #FDF0F0 100%);
 }
