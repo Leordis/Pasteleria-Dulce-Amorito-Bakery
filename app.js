@@ -390,28 +390,48 @@ function initCounters() {
   const counters = document.querySelectorAll('.count-up');
   if (!counters.length) return;
 
-  setTimeout(() => {
-    counters.forEach(el => {
-      const target = parseInt(el.getAttribute('data-target'), 10);
-      let duration = 1500;
-      if (target === 500) duration = 2000;
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const el = entry.target;
       
-      const intervalTime = 30; // ~33fps
-      const totalSteps = duration / intervalTime;
-      const increment = target / totalSteps;
-      let current = 0;
-      
-      const timer = setInterval(() => {
-        current += increment;
-        if (current >= target) {
-          el.textContent = target;
-          clearInterval(timer);
-        } else {
-          el.textContent = Math.floor(current);
+      if (entry.isIntersecting) {
+        if (el.dataset.timer) {
+          clearInterval(parseInt(el.dataset.timer, 10));
         }
-      }, intervalTime);
+
+        const target = parseInt(el.getAttribute('data-target'), 10);
+        let duration = 1500;
+        if (target === 500) duration = 2000;
+        
+        const intervalTime = 30; // ~33fps
+        const totalSteps = duration / intervalTime;
+        const increment = target / totalSteps;
+        let current = 0;
+        el.textContent = '0';
+        
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            el.textContent = target;
+            clearInterval(timer);
+            el.dataset.timer = "";
+          } else {
+            el.textContent = Math.floor(current);
+          }
+        }, intervalTime);
+        
+        el.dataset.timer = timer;
+      } else {
+        if (el.dataset.timer) {
+          clearInterval(parseInt(el.dataset.timer, 10));
+          el.dataset.timer = "";
+        }
+        el.textContent = '0';
+      }
     });
-  }, 500);
+  }, { threshold: 0.1 });
+
+  counters.forEach(c => observer.observe(c));
 }
 
 // ── MOBILE MENU ───────────────────────────────────
