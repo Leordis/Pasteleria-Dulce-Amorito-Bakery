@@ -1434,8 +1434,9 @@ footer span {
   right: 20px;
   width: 56px;
   height: 56px;
+  min-width: 56px;
+  min-height: 56px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #8B1A1A, #5a0e0e);
   border: 2px solid #C9A84C;
   color: #fff;
   font-size: 1.5rem;
@@ -1443,9 +1444,6 @@ footer span {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow:
-    4px 4px 12px rgba(139, 26, 26, 0.45),
-    -2px -2px 8px rgba(255, 255, 255, 0.1);
   text-decoration: none;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   animation:
@@ -1456,15 +1454,17 @@ footer span {
 
 #wa-float {
   bottom: 92px;
-  /* Above Tidio + 12px gap */
   z-index: 997;
+  background: #25D366;
+  box-shadow: 0 4px 15px rgba(37,211,102,0.4);
 }
 
 #cart-fab {
   bottom: 160px;
-  /* 92px + 56px (wa) + 12px gap */
   z-index: 998;
   font-size: 1.2rem;
+  background: #8B1A1A;
+  box-shadow: 0 4px 15px rgba(201,168,76,0.4);
 }
 
 .floating-btn:hover {
@@ -2034,5 +2034,40 @@ footer span {
   }
   to {
     background-position: 0 150px, 30px 190px, 70px 240px;
+  }
+}
+
+@keyframes logoEntrance {
+  0% { opacity: 0; transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.shimmer-gold-badge::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%; width: 50%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.6), transparent);
+  animation: shimmerBadge 4s infinite;
+}
+
+@media (max-width: 768px) {
+  .descriptive-text {
+    font-size: 16px !important;
+  }
+  
+  .compact-stats {
+    gap: 0.5rem !important;
+  }
+  
+  .compact-stats .stat-num {
+    font-size: 1.8rem !important;
+  }
+  
+  .compact-stats .stat-label {
+    font-size: 0.65rem !important;
+  }
+  
+  .compact-stats .stat-divider {
+    margin: 0 0.5rem !important;
   }
 }

@@ -85,6 +85,7 @@ let cakeOrder = { size:'', sizePrice:0, flavor:'', filling:'', deco:'', color:''
 document.addEventListener('DOMContentLoaded', () => {
   renderCatalog('tortas');
   renderTestimonials();
+  initCounters();
   updateCartUI();
   // Nav scroll
   let lastScrollY = window.scrollY;
@@ -382,6 +383,39 @@ function renderTestimonials() {
   }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
   document.querySelectorAll('.testi-card').forEach(card => observer.observe(card));
+}
+
+// ── COUNTER ANIMATION ─────────────────────────────
+function initCounters() {
+  const counters = document.querySelectorAll('.count-up');
+  if (!counters.length) return;
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = parseInt(el.getAttribute('data-target'), 10);
+        const duration = 2000;
+        let startTimestamp = null;
+        
+        const step = (timestamp) => {
+          if (!startTimestamp) startTimestamp = timestamp;
+          const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+          const easeProgress = 1 - Math.pow(1 - progress, 4); // easeOutQuart
+          el.textContent = Math.floor(easeProgress * target);
+          if (progress < 1) {
+            window.requestAnimationFrame(step);
+          } else {
+            el.textContent = target;
+          }
+        };
+        window.requestAnimationFrame(step);
+        obs.unobserve(el);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  counters.forEach(c => observer.observe(c));
 }
 
 // ── MOBILE MENU ───────────────────────────────────
