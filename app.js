@@ -390,32 +390,28 @@ function initCounters() {
   const counters = document.querySelectorAll('.count-up');
   if (!counters.length) return;
 
-  const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const el = entry.target;
-        const target = parseInt(el.getAttribute('data-target'), 10);
-        const duration = 2000;
-        let startTimestamp = null;
-        
-        const step = (timestamp) => {
-          if (!startTimestamp) startTimestamp = timestamp;
-          const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-          const easeProgress = 1 - Math.pow(1 - progress, 4); // easeOutQuart
-          el.textContent = Math.floor(easeProgress * target);
-          if (progress < 1) {
-            window.requestAnimationFrame(step);
-          } else {
-            el.textContent = target;
-          }
-        };
-        window.requestAnimationFrame(step);
-        obs.unobserve(el);
-      }
+  setTimeout(() => {
+    counters.forEach(el => {
+      const target = parseInt(el.getAttribute('data-target'), 10);
+      let duration = 1500;
+      if (target === 500) duration = 2000;
+      
+      const intervalTime = 30; // ~33fps
+      const totalSteps = duration / intervalTime;
+      const increment = target / totalSteps;
+      let current = 0;
+      
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+          el.textContent = target;
+          clearInterval(timer);
+        } else {
+          el.textContent = Math.floor(current);
+        }
+      }, intervalTime);
     });
-  }, { threshold: 0.1 });
-
-  counters.forEach(c => observer.observe(c));
+  }, 500);
 }
 
 // ── MOBILE MENU ───────────────────────────────────
