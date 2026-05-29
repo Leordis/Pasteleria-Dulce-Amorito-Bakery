@@ -1,5 +1,5 @@
 // ── DATA ──────────────────────────────────────────
-const WA = '14073122435';
+const WA = '16893226891';
 
 function openWA(msg) {
   const a = document.createElement('a');
@@ -13,73 +13,119 @@ function openWA(msg) {
 
 const PRODUCTS = {
   artisan: [
-    { id:'a1', name:'Milhojas', desc:'Crispy puff pastry layers with pastry cream', emoji:'🥐', badge:'Popular',
-      img:"Variedades de dulces /mil hojas/3558802C-34F5-407F-B25E-1779E4B5A472.PNG",
-      sizes:[{label:'5 ppl',price:30},{label:'10 ppl',price:50},{label:'20 ppl',price:90}] },
-    { id:'a2', name:'Tres Leches de Frutas', desc:'Fluffy sponge cake soaked in tres leches with fresh fruit', emoji:'🍰', badge:'⭐ Favorite',
-      img:"Variedades de dulces /tres leche/56002ACB-FB5B-4491-9B9C-A6BAB97BCEC3.PNG",
-      sizes:[{label:'6" · 8 ppl',price:45},{label:'8" · 15 ppl',price:70},{label:'10" · 30 ppl',price:95}] },
-    { id:'a3', name:'Churros (12 ct)', desc:'Artisanal churros, crispy outside, soft inside', emoji:'🥐',
-      img:"Variedades de dulces /churros/churros.png", price:25 },
-    { id:'a4', name:'Flan', desc:'Homemade flan with caramel, creamy and smooth', emoji:'🍮',
-      img:"Variedades de dulces /flan/IMG_9605.JPG", price:20 },
-    { id:'a5', name:'Chocoflan', desc:'The perfect combo: flan + chocolate cake', emoji:'🍫',
-      img:"Variedades de dulces /choco Flan/IMG_9606 2.JPG", price:40 },
-    { id:'a6', name:'Cheesecake', desc:'Creamy cheesecake · Passion fruit or Strawberry', emoji:'🧁', badge:'2 flavors',
-      img:"Variedades de dulces /chescake de maracuya/IMG_9610.JPG", price:40 },
-    { id:'a7', name:'Pan de Jamón', desc:'Artisanal bread filled with ham, olives, raisins, and bacon — traditional Venezuelan flavor', emoji:'🥖', badge:'🎄 Seasonal',
-      img:"Variedades de dulces /pan de jamon/IMG_9608.JPG",
-      sizes:[{label:'Small · 6 ppl',price:18},{label:'Med · 12 ppl',price:28},{label:'Large · 20 ppl',price:38}] },
+    {
+      id: 'a1', name: 'Milhojas', desc: 'Crispy puff pastry layers with pastry cream', emoji: '🥐', badge: 'Popular',
+      img: "Variedades de dulces /mil hojas/3558802C-34F5-407F-B25E-1779E4B5A472.PNG",
+      sizes: [{ label: '5 ppl', price: 30 }, { label: '10 ppl', price: 50 }, { label: '20 ppl', price: 90 }]
+    },
+    {
+      id: 'a2', name: 'Tres Leches de Frutas', desc: 'Fluffy sponge cake soaked in tres leches with fresh fruit', emoji: '🍰', badge: '⭐ Favorite',
+      img: "Variedades de dulces /tres leche/56002ACB-FB5B-4491-9B9C-A6BAB97BCEC3.PNG",
+      sizes: [{ label: '6" · 8 ppl', price: 45 }, { label: '8" · 15 ppl', price: 70 }, { label: '10" · 30 ppl', price: 95 }]
+    },
+    {
+      id: 'a3', name: 'Churros (12 ct)', desc: 'Artisanal churros, crispy outside, soft inside', emoji: '🥐',
+      img: "Variedades de dulces /churros/churros.png", price: 25
+    },
+    {
+      id: 'a4', name: 'Flan', desc: 'Homemade flan with caramel, creamy and smooth', emoji: '🍮',
+      img: "Variedades de dulces /flan/IMG_9605.JPG", price: 20
+    },
+    {
+      id: 'a5', name: 'Chocoflan', desc: 'The perfect combo: flan + chocolate cake', emoji: '🍫',
+      img: "Variedades de dulces /choco Flan/IMG_9606 2.JPG", price: 40
+    },
+    {
+      id: 'a6', name: 'Cheesecake', desc: 'Creamy cheesecake · Passion fruit or Strawberry', emoji: '🧁', badge: '2 flavors',
+      img: "Variedades de dulces /chescake de maracuya/IMG_9610.JPG", price: 40
+    },
+    {
+      id: 'a7', name: 'Pan de Jamón', desc: 'Artisanal bread filled with ham, olives, raisins, and bacon — traditional Venezuelan flavor', emoji: '🥖', badge: '🎄 Seasonal',
+      img: "Variedades de dulces /pan de jamon/IMG_9608.JPG",
+      sizes: [{ label: 'Small · 6 ppl', price: 18 }, { label: 'Med · 12 ppl', price: 28 }, { label: 'Large · 20 ppl', price: 38 }]
+    },
   ],
   individual: [
-    { id:'i1', name:'Passion Fruit Cheesecake', desc:'12 individual units, tropical passion fruit', emoji:'🍊',
-      img:"Variedades de dulces /INDIVIDUALES/CHIScake de maracuya/EDE70349-5BD5-4A5D-A898-5851659C0190.PNG", price:45, unit:'12 ct' },
-    { id:'i2', name:'Tres Leches Cake', desc:'12 individual portions of classic tres leches', emoji:'🍰',
-      img:"Variedades de dulces /INDIVIDUALES/torta de tres leche/68A2C58F-434B-4C70-B9C1-D4C24F40A673 2.PNG", price:45, unit:'12 ct' },
-    { id:'i3', name:'Chocolate Cake', desc:'12 portions of moist chocolate cake', emoji:'🍫',
-      img:"Variedades de dulces /INDIVIDUALES/torta de chocolate/EAB0E20A-40F8-4575-AF05-F5C16EE93F16.PNG", price:45, unit:'12 ct' },
-    { id:'i4', name:'Mini Milhojas', desc:'12 crispy mini milhojas with cream', emoji:'🥐',
-      img:"Variedades de dulces /INDIVIDUALES/mini mil hojas/7271511A-4786-4348-983B-4C231B4D518B.PNG", price:50, unit:'12 ct' },
-    { id:'i5', name:'Flan / Quesillo', desc:'12 individual caramelized flans', emoji:'🍮',
-      img:"Variedades de dulces /INDIVIDUALES/flan quesillo/54828FFA-B50A-4B75-8D3A-F69881747830.PNG", price:40, unit:'12 ct' },
-    { id:'i6', name:'Mini Merengón', desc:'12 mini merengones with chantilly cream', emoji:'☁️',
-      img:"Variedades de dulces /INDIVIDUALES/mini merengon/IMG_9623.JPG", price:45, unit:'12 ct' },
-    { id:'i7', name:'Tiramisú', desc:'12 portions of classic Italian tiramisú', emoji:'☕',
-      img:"Variedades de dulces /tiramisu/IMG_9611.JPG", price:45, unit:'12 ct' },
-    { id:'i8', name:'Macarons', desc:'12 French macarons in assorted flavors', emoji:'🎀',
-      img:"Variedades de dulces /INDIVIDUALES/macarones/IMG_9613.JPG", price:30, unit:'12 ct' },
-    { id:'i9', name:'Cake Pops', desc:'12 hand-decorated cake pops', emoji:'🍡',
-      img:"Variedades de dulces /INDIVIDUALES/cake pops/IMG_9621.JPG", price:35, unit:'12 ct' },
-    { id:'i10', name:'Cupcakes', desc:'12 cupcakes decorated with buttercream', emoji:'🧁',
-      img:"Variedades de dulces /cup cake/653D8618-38F1-451E-B125-5B28BC51710E.PNG", price:45, unit:'12 ct' },
+    {
+      id: 'i1', name: 'Passion Fruit Cheesecake', desc: '12 individual units, tropical passion fruit', emoji: '🍊',
+      img: "Variedades de dulces /INDIVIDUALES/CHIScake de maracuya/EDE70349-5BD5-4A5D-A898-5851659C0190.PNG", price: 45, unit: '12 ct'
+    },
+    {
+      id: 'i2', name: 'Tres Leches Cake', desc: '12 individual portions of classic tres leches', emoji: '🍰',
+      img: "Variedades de dulces /INDIVIDUALES/torta de tres leche/68A2C58F-434B-4C70-B9C1-D4C24F40A673 2.PNG", price: 45, unit: '12 ct'
+    },
+    {
+      id: 'i3', name: 'Chocolate Cake', desc: '12 portions of moist chocolate cake', emoji: '🍫',
+      img: "Variedades de dulces /INDIVIDUALES/torta de chocolate/EAB0E20A-40F8-4575-AF05-F5C16EE93F16.PNG", price: 45, unit: '12 ct'
+    },
+    {
+      id: 'i4', name: 'Mini Milhojas', desc: '12 crispy mini milhojas with cream', emoji: '🥐',
+      img: "Variedades de dulces /INDIVIDUALES/mini mil hojas/7271511A-4786-4348-983B-4C231B4D518B.PNG", price: 50, unit: '12 ct'
+    },
+    {
+      id: 'i5', name: 'Flan / Quesillo', desc: '12 individual caramelized flans', emoji: '🍮',
+      img: "Variedades de dulces /INDIVIDUALES/flan quesillo/54828FFA-B50A-4B75-8D3A-F69881747830.PNG", price: 40, unit: '12 ct'
+    },
+    {
+      id: 'i6', name: 'Mini Merengón', desc: '12 mini merengones with chantilly cream', emoji: '☁️',
+      img: "Variedades de dulces /INDIVIDUALES/mini merengon/IMG_9623.JPG", price: 45, unit: '12 ct'
+    },
+    {
+      id: 'i7', name: 'Tiramisú', desc: '12 portions of classic Italian tiramisú', emoji: '☕',
+      img: "Variedades de dulces /tiramisu/IMG_9611.JPG", price: 45, unit: '12 ct'
+    },
+    {
+      id: 'i8', name: 'Macarons', desc: '12 French macarons in assorted flavors', emoji: '🎀',
+      img: "Variedades de dulces /INDIVIDUALES/macarones/IMG_9613.JPG", price: 30, unit: '12 ct'
+    },
+    {
+      id: 'i9', name: 'Cake Pops', desc: '12 hand-decorated cake pops', emoji: '🍡',
+      img: "Variedades de dulces /INDIVIDUALES/cake pops/IMG_9621.JPG", price: 35, unit: '12 ct'
+    },
+    {
+      id: 'i10', name: 'Cupcakes', desc: '12 cupcakes decorated with buttercream', emoji: '🧁',
+      img: "Variedades de dulces /cup cake/653D8618-38F1-451E-B125-5B28BC51710E.PNG", price: 45, unit: '12 ct'
+    },
   ],
   tortas: [
-    { id:'t1', name:'Custom Cake', desc:'Designed 100% to your liking: flavor, filling, decor, and size', emoji:'🎂', badge:'⭐ Specialty',
-      img:"tortas personalisadas/torta-personalizada.png", price:45, note:'Price from · use configurator' },
-    { id:'t2', name:'Wedding Cake', desc:'Elegance and love in every tier · 2+ tiers, premium decor', emoji:'💒', badge:'Exclusive',
-      img:"bodas/7EF59F04-7AF3-4EA2-A5B7-491B6ECA9344.PNG", price:145, note:'Price from' },
-    { id:'t3', name:'Quinceañera Cake', desc:'Dream design for your most special day', emoji:'👑',
-      img:"torta de quinceañera/IMG_8143.jpg", price:95, note:'Price from' },
-    { id:'t4', name:'Birthday Cake', desc:'Customized with your favorite colors, theme, and flavors', emoji:'🎉',
-      img:"tortas de cumpleaños/E7A91446-0112-4733-9F76-8190C6BACF87.PNG", price:45, note:'Price from' },
-    { id:'t5', name:'Gender Reveal Cake', desc:'Surprise everyone with the secret color inside the cake', emoji:'🎀',
-      img:"gender reveal cake/IMG_9630.JPG", price:65, note:'Price from' },
-    { id:'t6', name:'Dessert Table', desc:'Full dessert table for your special event', emoji:'✨',
-      img:"disert table/mesa-postre.png", price:150, note:'Price from · contact us' },
+    {
+      id: 't1', name: 'Custom Cake', desc: 'Designed 100% to your liking: flavor, filling, decor, and size', emoji: '🎂', badge: '⭐ Specialty',
+      img: "tortas personalisadas/torta-personalizada.png", price: 45, note: 'Price from · use configurator'
+    },
+    {
+      id: 't2', name: 'Wedding Cake', desc: 'Elegance and love in every tier · 2+ tiers, premium decor', emoji: '💒', badge: 'Exclusive',
+      img: "bodas/7EF59F04-7AF3-4EA2-A5B7-491B6ECA9344.PNG", price: 145, note: 'Price from'
+    },
+    {
+      id: 't3', name: 'Quinceañera Cake', desc: 'Dream design for your most special day', emoji: '👑',
+      img: "torta de quinceañera/IMG_8143.jpg", price: 95, note: 'Price from'
+    },
+    {
+      id: 't4', name: 'Birthday Cake', desc: 'Customized with your favorite colors, theme, and flavors', emoji: '🎉',
+      img: "tortas de cumpleaños/E7A91446-0112-4733-9F76-8190C6BACF87.PNG", price: 45, note: 'Price from'
+    },
+    {
+      id: 't5', name: 'Gender Reveal Cake', desc: 'Surprise everyone with the secret color inside the cake', emoji: '🎀',
+      img: "gender reveal cake/IMG_9630.JPG", price: 65, note: 'Price from'
+    },
+    {
+      id: 't6', name: 'Dessert Table', desc: 'Full dessert table for your special event', emoji: '✨',
+      img: "disert table/mesa-postre.png", price: 150, note: 'Price from · contact us'
+    },
   ]
 };
 
 const TESTIMONIALS = [
-  { text:'My wedding cake turned out exactly as I dreamed. All the guests asked who made it — the best cakes in Orlando!', name:'María G.', loc:'Orlando, FL', color:'#c0263d' },
-  { text:'I ordered cupcakes for the baby shower and they were the best I have ever tasted in my life. Beautiful presentation and incredible flavor.', name:'Kariela R.', loc:'Kissimmee, FL', color:'#c9973b' },
-  { text:'The tres leches with fruit is crazy delicious. I have already ordered it 3 times for different events. It never disappoints!', name:'Paola M.', loc:'Orlando, FL', color:'#e07898' },
-  { text:'My daughter\'s quinceañera cake was a dream come true. The design, the flavor, the punctuality — everything was perfect.', name:'Luciana V.', loc:'Orlando, FL', color:'#c0263d' },
+  { text: 'My wedding cake turned out exactly as I dreamed. All the guests asked who made it — the best cakes in Orlando!', name: 'María G.', loc: 'Orlando, FL', color: '#c0263d' },
+  { text: 'I ordered cupcakes for the baby shower and they were the best I have ever tasted in my life. Beautiful presentation and incredible flavor.', name: 'Kariela R.', loc: 'Kissimmee, FL', color: '#c9973b' },
+  { text: 'The tres leches with fruit is crazy delicious. I have already ordered it 3 times for different events. It never disappoints!', name: 'Paola M.', loc: 'Orlando, FL', color: '#e07898' },
+  { text: 'My daughter\'s quinceañera cake was a dream come true. The design, the flavor, the punctuality — everything was perfect.', name: 'Luciana V.', loc: 'Orlando, FL', color: '#c0263d' },
 ];
 
 // ── STATE ─────────────────────────────────────────
 let cart = JSON.parse(localStorage.getItem('da_cart') || '[]');
 let currentTab = 'tortas';
-let cakeOrder = { size:'', sizePrice:0, flavor:'', filling:'', deco:'', color:'', date:'' };
+let cakeOrder = { size: '', sizePrice: 0, flavor: '', filling: '', deco: '', color: '', date: '' };
 
 // ── INIT ──────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
@@ -93,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', () => {
     const currentScrollY = window.scrollY;
     nav.classList.toggle('scrolled', currentScrollY > 40);
-    
+
     if (currentScrollY > lastScrollY && currentScrollY > 10) {
       nav.classList.add('nav-hidden');
     } else {
@@ -119,8 +165,8 @@ function renderCatalog(tab) {
 
 function buildCard(p, tab) {
   const hasSizes = p.sizes && p.sizes.length;
-  const sizeOpts = hasSizes ? `<select class="size-select" id="sel-${p.id}" onchange="updateCardPrice('${p.id}',this.value,${JSON.stringify(p.sizes).replace(/"/g,"'")})">
-    ${p.sizes.map((s,i) => `<option value="${i}">${s.label} · $${s.price}</option>`).join('')}
+  const sizeOpts = hasSizes ? `<select class="size-select" id="sel-${p.id}" onchange="updateCardPrice('${p.id}',this.value,${JSON.stringify(p.sizes).replace(/"/g, "'")})">
+    ${p.sizes.map((s, i) => `<option value="${i}">${s.label} · $${s.price}</option>`).join('')}
   </select>` : '';
 
   const basePrice = hasSizes ? p.sizes[0].price : p.price;
@@ -129,9 +175,9 @@ function buildCard(p, tab) {
   return `<div class="product-card">
     <div class="card-img" style="background:#fdf8f5;display:flex;align-items:center;justify-content:center;">
       ${p.img
-        ? `<img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;border-radius:16px 16px 0 0;display:block;" onclick="openLightbox(${JSON.stringify(p.img).replace(/"/g,'&quot;')},${JSON.stringify(p.name).replace(/"/g,'&quot;')})" onerror="this.outerHTML='<div style=\\'text-align:center;padding:2rem;color:var(--gold-mid);font-family:serif;font-style:italic;\\'>Dulce Amorito</div>'"/>`
-        : `<div style='text-align:center;padding:2rem;color:var(--gold-mid);font-family:serif;font-style:italic;'>Dulce Amorito</div>`
-      }
+      ? `<img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;border-radius:16px 16px 0 0;display:block;" onclick="openLightbox(${JSON.stringify(p.img).replace(/"/g, '&quot;')},${JSON.stringify(p.name).replace(/"/g, '&quot;')})" onerror="this.outerHTML='<div style=\\'text-align:center;padding:2rem;color:var(--gold-mid);font-family:serif;font-style:italic;\\'>Dulce Amorito</div>'"/>`
+      : `<div style='text-align:center;padding:2rem;color:var(--gold-mid);font-family:serif;font-style:italic;'>Dulce Amorito</div>`
+    }
       ${p.badge ? `<span class="card-badge">${p.badge}</span>` : ''}
     </div>
     <div class="card-body">
@@ -141,23 +187,23 @@ function buildCard(p, tab) {
       <div class="card-footer">
         <div class="card-price">$<span id="price-${p.id}">${basePrice}</span> ${priceLabel}</div>
         ${tab === 'tortas' && p.id === 't1'
-          ? `<button class="btn-add" onclick="document.getElementById('configurator').scrollIntoView({behavior:'smooth'})">🎂 Configure</button>`
-          : `<button class="btn-add" onclick="addToCart('${p.id}','${tab}')">+ Add</button>`
-        }
+      ? `<button class="btn-add" onclick="document.getElementById('configurator').scrollIntoView({behavior:'smooth'})">🎂 Configure</button>`
+      : `<button class="btn-add" onclick="addToCart('${p.id}','${tab}')">+ Add</button>`
+    }
       </div>
     </div>
   </div>`;
 }
 
 function updateCardPrice(id, idx, sizes) {
-  const s = typeof sizes === 'string' ? JSON.parse(sizes.replace(/'/g,'"')) : sizes;
-  document.getElementById('price-'+id).textContent = s[idx].price;
+  const s = typeof sizes === 'string' ? JSON.parse(sizes.replace(/'/g, '"')) : sizes;
+  document.getElementById('price-' + id).textContent = s[idx].price;
 }
 
 function addToCart(id, tab) {
   const p = PRODUCTS[tab].find(x => x.id === id);
   if (!p) return;
-  const selEl = document.getElementById('sel-'+id);
+  const selEl = document.getElementById('sel-' + id);
   let name = p.name, price = p.price || 0, detail = '';
   if (p.sizes && selEl) {
     const s = p.sizes[selEl.value];
@@ -166,12 +212,12 @@ function addToCart(id, tab) {
   } else if (p.unit) {
     detail = p.unit;
   }
-  pushToCart({ id: id+'_'+Date.now(), name, emoji: p.emoji, detail, price });
+  pushToCart({ id: id + '_' + Date.now(), name, emoji: p.emoji, detail, price });
 }
 
 // ── CAKE CONFIGURATOR ─────────────────────────────
 function toggleStep(n) {
-  const el = document.getElementById('cs'+n);
+  const el = document.getElementById('cs' + n);
   el.classList.toggle('active');
 }
 
@@ -192,11 +238,11 @@ function pick(btn, field, svId) {
   btn.classList.add('sel');
   const val = btn.textContent.trim();
   cakeOrder[field] = val;
-  document.getElementById(svId).textContent = val.substring(0,18);
+  document.getElementById(svId).textContent = val.substring(0, 18);
   // update preview
-  const map = { flavor:'ps-flavor', filling:'ps-filling', deco:'ps-deco' };
+  const map = { flavor: 'ps-flavor', filling: 'ps-filling', deco: 'ps-deco' };
   if (map[field]) document.getElementById(map[field]).textContent = val;
-  openNextStep(parseInt(btn.closest('.config-step').id.replace('cs','')));
+  openNextStep(parseInt(btn.closest('.config-step').id.replace('cs', '')));
 }
 
 function pickColor(btn, name, hex) {
@@ -206,34 +252,34 @@ function pickColor(btn, name, hex) {
   cakeOrder.color = name;
   document.getElementById('sv5').textContent = name;
   document.getElementById('ps-color').textContent = name;
-  
+
   // update SVG
   document.getElementById('frosting-main').style.fill = hex;
   document.getElementById('frosting-drip').style.fill = hex;
   document.getElementById('frosting-drip').style.stroke = hex;
-  
+
   openNextStep(5);
 }
 
 function pickDate(val) {
   if (!val) return;
-  const d = new Date(val+'T00:00:00');
-  const fmt = d.toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+  const d = new Date(val + 'T00:00:00');
+  const fmt = d.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
   cakeOrder.date = fmt;
-  document.getElementById('sv6').textContent = d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+  document.getElementById('sv6').textContent = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
   document.getElementById('ps-date').textContent = fmt;
 }
 
 function openNextStep(current) {
-  const next = document.getElementById('cs'+(current+1));
+  const next = document.getElementById('cs' + (current + 1));
   if (next && !next.classList.contains('active')) {
     next.classList.add('active');
-    document.getElementById('cs'+current).classList.add('done');
+    document.getElementById('cs' + current).classList.add('done');
   }
 }
 
 function updateTotal() {
-  document.getElementById('ps-total').textContent = '$'+cakeOrder.sizePrice;
+  document.getElementById('ps-total').textContent = '$' + cakeOrder.sizePrice;
 }
 
 function orderCake() {
@@ -256,10 +302,10 @@ function addCakeToCart() {
   const o = cakeOrder;
   if (!o.size) { alert('Please select the size first'); return; }
   pushToCart({
-    id: 'cake_'+Date.now(),
+    id: 'cake_' + Date.now(),
     name: 'Custom Cake',
     emoji: '🎂',
-    detail: `${o.size} · ${o.flavor||'—'} · ${o.color||'—'}`,
+    detail: `${o.size} · ${o.flavor || '—'} · ${o.color || '—'}`,
     price: o.sizePrice
   });
   showToast('✅ Cake added to cart');
@@ -292,7 +338,7 @@ function saveCart() {
 
 function updateCartUI() {
   const count = cart.length;
-  const total = cart.reduce((s,i) => s + (i.price||0), 0);
+  const total = cart.reduce((s, i) => s + (i.price || 0), 0);
 
   // FAB count
   const badge = document.getElementById('cart-count');
@@ -300,7 +346,7 @@ function updateCartUI() {
   badge.classList.toggle('hidden', count === 0);
 
   // Total
-  document.getElementById('cart-total').textContent = '$'+total;
+  document.getElementById('cart-total').textContent = '$' + total;
 
   // Items
   const container = document.getElementById('cart-items');
@@ -330,7 +376,7 @@ function toggleCart() {
 
 function checkoutWhatsApp() {
   if (!cart.length) { alert('⚠️ Your cart is empty'); return; }
-  const total = cart.reduce((s,i) => s + (i.price||0), 0);
+  const total = cart.reduce((s, i) => s + (i.price || 0), 0);
   const lines = cart.map(i => `• ${i.name}${i.detail ? ' (' + i.detail + ')' : ''} — $${i.price}`).join('\n');
   const msg =
     `🎂 *ORDER — Dulce Amorito Bakery*\n\n` +
@@ -393,7 +439,7 @@ function initCounters() {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       const el = entry.target;
-      
+
       if (entry.isIntersecting) {
         if (el.dataset.timer) {
           clearInterval(parseInt(el.dataset.timer, 10));
@@ -402,13 +448,13 @@ function initCounters() {
         const target = parseInt(el.getAttribute('data-target'), 10);
         let duration = 1500;
         if (target === 500) duration = 2000;
-        
+
         const intervalTime = 30; // ~33fps
         const totalSteps = duration / intervalTime;
         const increment = target / totalSteps;
         let current = 0;
         el.textContent = '0';
-        
+
         const timer = setInterval(() => {
           current += increment;
           if (current >= target) {
@@ -419,7 +465,7 @@ function initCounters() {
             el.textContent = Math.floor(current);
           }
         }, intervalTime);
-        
+
         el.dataset.timer = timer;
       } else {
         if (el.dataset.timer) {
@@ -449,11 +495,11 @@ function showToast(msg) {
   const t = document.createElement('div');
   t.textContent = msg;
   Object.assign(t.style, {
-    position:'fixed', bottom:'6rem', left:'50%', transform:'translateX(-50%)',
-    background:'#2a1a22', color:'#fff', padding:'.7rem 1.4rem',
-    borderRadius:'50px', fontSize:'.85rem', fontWeight:'600',
-    zIndex:'9999', opacity:'1', transition:'opacity .4s', whiteSpace:'nowrap',
-    boxShadow:'0 4px 20px rgba(0,0,0,.25)'
+    position: 'fixed', bottom: '6rem', left: '50%', transform: 'translateX(-50%)',
+    background: '#2a1a22', color: '#fff', padding: '.7rem 1.4rem',
+    borderRadius: '50px', fontSize: '.85rem', fontWeight: '600',
+    zIndex: '9999', opacity: '1', transition: 'opacity .4s', whiteSpace: 'nowrap',
+    boxShadow: '0 4px 20px rgba(0,0,0,.25)'
   });
   document.body.appendChild(t);
   setTimeout(() => { t.style.opacity = '0'; setTimeout(() => t.remove(), 400); }, 2200);
@@ -461,18 +507,18 @@ function showToast(msg) {
 
 // ── LIGHTBOX + GALLERY NAVIGATION ─────────────────
 const GALLERY_IMGS = [
-  'imagenes/dulce-1.png',  'imagenes/dulce-2.png',  'imagenes/dulce-3.png',
-  'imagenes/dulce-4.png',  'imagenes/dulce-5.png',  'imagenes/dulce-6.png',
-  'imagenes/dulce-7.png',  'imagenes/dulce-8.png',  'imagenes/dulce-9.png',
+  'imagenes/dulce-1.png', 'imagenes/dulce-2.png', 'imagenes/dulce-3.png',
+  'imagenes/dulce-4.png', 'imagenes/dulce-5.png', 'imagenes/dulce-6.png',
+  'imagenes/dulce-7.png', 'imagenes/dulce-8.png', 'imagenes/dulce-9.png',
   'imagenes/dulce-10.png', 'imagenes/dulce-11.png', 'imagenes/dulce-12.png',
   'imagenes/dulce-13.png', 'imagenes/dulce-14.png', 'imagenes/dulce-15.png',
   'imagenes/dulce-16.png', 'imagenes/dulce-17.png', 'imagenes/dulce-18.png',
   'imagenes/dulce-19.png', 'imagenes/dulce-23.png'
 ];
 
-let _scrollY      = 0;
-let _galleryIdx   = 0;   // current photo index in gallery
-let _isGallery    = false; // true when navigating gallery, false for single-image lightbox
+let _scrollY = 0;
+let _galleryIdx = 0;   // current photo index in gallery
+let _isGallery = false; // true when navigating gallery, false for single-image lightbox
 
 function _setLightboxImg(src, caption, counter) {
   const img = document.getElementById('lightbox-img');
@@ -494,7 +540,7 @@ function _setLightboxImg(src, caption, counter) {
 }
 
 function openGallery(idx) {
-  _isGallery  = true;
+  _isGallery = true;
   _galleryIdx = idx;
   const lb = document.getElementById('lightbox');
   document.getElementById('lightbox-img').style.opacity = '0';
@@ -510,7 +556,7 @@ function openGallery(idx) {
 
 function openLightbox(src, caption) {
   _isGallery = false;
-  const lb  = document.getElementById('lightbox');
+  const lb = document.getElementById('lightbox');
   document.getElementById('lightbox-img').src = src;
   document.getElementById('lightbox-img').style.opacity = '1';
   document.getElementById('lightbox-caption').textContent = caption || '';
@@ -528,8 +574,8 @@ function _lockScroll() {
   if (window.innerWidth > 900) {
     _scrollY = window.scrollY;
     document.body.style.position = 'fixed';
-    document.body.style.top      = `-${_scrollY}px`;
-    document.body.style.width    = '100%';
+    document.body.style.top = `-${_scrollY}px`;
+    document.body.style.width = '100%';
     _scrollLocked = true;
   } else {
     _scrollLocked = false;  // mobile: no lock, no jump
@@ -555,8 +601,8 @@ function closeLightbox() {
     setTimeout(() => {
       document.documentElement.style.scrollBehavior = 'auto';
       document.body.style.position = '';
-      document.body.style.top      = '';
-      document.body.style.width    = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
       window.scrollTo({ top: _scrollY, behavior: 'instant' });
     }, 300);
     setTimeout(() => {
@@ -573,16 +619,16 @@ function closeLightbox() {
 // ── Keyboard navigation ─────────────────────────────
 document.addEventListener('keydown', e => {
   if (!document.getElementById('lightbox').classList.contains('active')) return;
-  if (e.key === 'Escape')      closeLightbox();
-  if (e.key === 'ArrowRight')  galleryNav(1);
-  if (e.key === 'ArrowLeft')   galleryNav(-1);
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowRight') galleryNav(1);
+  if (e.key === 'ArrowLeft') galleryNav(-1);
 });
 
 // ── Touch swipe navigation (mobile) ────────────────
 // _swipeHandled prevents the synthetic click (fired after touchend on mobile)
 // from accidentally closing the lightbox right after a swipe.
-let _touchStartX  = 0;
-let _touchStartY  = 0;
+let _touchStartX = 0;
+let _touchStartY = 0;
 let _swipeHandled = false;
 
 (function attachSwipe() {
@@ -590,8 +636,8 @@ let _swipeHandled = false;
   if (!lb) return;
 
   lb.addEventListener('touchstart', e => {
-    _touchStartX  = e.changedTouches[0].clientX;
-    _touchStartY  = e.changedTouches[0].clientY;
+    _touchStartX = e.changedTouches[0].clientX;
+    _touchStartY = e.changedTouches[0].clientY;
     _swipeHandled = false;
   }, { passive: true });
 

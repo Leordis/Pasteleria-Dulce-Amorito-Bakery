@@ -1,5 +1,5 @@
 // ── CONFIG ────────────────────────────────────────
-const WA = '14073122435';
+const WA = '16893226891';
 
 const state = {
   size:    { val: 'small', label: '6" · 8 personas',   price: 45 },
