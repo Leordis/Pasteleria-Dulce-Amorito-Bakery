@@ -478,7 +478,30 @@ function initCounters() {
   }, { threshold: 0.1 });
 
   counters.forEach(c => observer.observe(c));
-}
+}// FIX: disparar manualmente si ya son visibles al cargar
+setTimeout(() => {
+  counters.forEach(c => {
+    const rect = c.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      const target = parseInt(c.getAttribute('data-target'), 10);
+      const duration = target >= 500 ? 2000 : 1500;
+      const intervalTime = 30;
+      const totalSteps = duration / intervalTime;
+      const increment = target / totalSteps;
+      let current = 0;
+      c.textContent = '0';
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+          c.textContent = target;
+          clearInterval(timer);
+        } else {
+          c.textContent = Math.floor(current);
+        }
+      }, intervalTime);
+    }
+  });
+}, 300);
 
 // ── MOBILE MENU ───────────────────────────────────
 function toggleMenu() {
