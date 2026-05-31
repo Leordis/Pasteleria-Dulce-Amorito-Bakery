@@ -1346,10 +1346,11 @@ section {
 }
 
 .contact-form {
-  background: rgba(255, 255, 255, .05);
-  border: 1px solid rgba(192, 38, 61, .15);
+  background: #311f28;
+  border: 1px solid rgba(192, 38, 61, .3);
   border-radius: 20px;
-  padding: 2rem
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25)
 }
 
 .form-group {
@@ -1359,7 +1360,7 @@ section {
 .form-group label {
   display: block;
   font-size: .75rem;
-  color: rgba(255, 255, 255, .55);
+  color: rgba(255, 255, 255, .7);
   letter-spacing: .08em;
   text-transform: uppercase;
   margin-bottom: .4rem;
@@ -1370,14 +1371,32 @@ section {
 .form-group textarea,
 .form-group select {
   width: 100%;
-  background: rgba(255, 255, 255, .07);
-  border: 1px solid rgba(192, 38, 61, .2);
+  background: #23151c;
+  border: 1px solid rgba(192, 38, 61, .35);
   border-radius: 10px;
   padding: .7rem 1rem;
   color: #fff;
   font-family: inherit;
   font-size: .88rem;
-  transition: border-color .2s
+  transition: border-color .2s;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.form-group select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23c9973b' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+}
+
+.form-group select option {
+  background: #23151c;
+  color: #fff;
+}
+
+.form-group input[type="date"] {
+  color-scheme: dark;
 }
 
 .form-group input:focus,
