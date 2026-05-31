@@ -444,7 +444,35 @@ function renderTestimonials() {
 }
 
 // ── COUNTER ANIMATION ─────────────────────────────
-function initCounters() {}
+function initCounters() {
+  const counters = document.querySelectorAll('.count-up');
+  if (!counters.length) return;
+
+  setTimeout(() => {
+    counters.forEach(c => {
+      const target = parseInt(c.getAttribute('data-target'), 10);
+      if (isNaN(target)) return;
+
+      const duration = 2000; // 2 seconds
+      const intervalTime = 30; // ~33fps
+      const totalSteps = duration / intervalTime;
+      const increment = target / totalSteps;
+      let current = 0;
+
+      c.textContent = '0';
+
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+          c.textContent = target;
+          clearInterval(timer);
+        } else {
+          c.textContent = Math.floor(current);
+        }
+      }, intervalTime);
+    });
+  }, 500);
+}
 
 // ── MOBILE MENU ───────────────────────────────────
 function toggleMenu() {
