@@ -193,7 +193,7 @@ function buildCard(p, tab) {
         <div class="card-price">$<span id="price-${p.id}">${basePrice}</span> ${priceLabel}</div>
         ${tab === 'tortas' && p.id === 't1'
       ? `<button class="btn-add" onclick="document.getElementById('configurator').scrollIntoView({behavior:'smooth'})">🎂 Configure</button>`
-      : `<button class="btn-add" onclick="addToCart('${p.id}','${tab}')">+ Add</button>`
+      : `<button class="btn-add" onclick="addToCart('${p.id}','${tab}')">Order</button>`
     }
       </div>
     </div>
@@ -224,7 +224,13 @@ function addToCart(id, tab) {
   } else if (p.unit) {
     detail = p.unit;
   }
-  pushToCart({ id: id + '_' + Date.now(), name, emoji: p.emoji, detail, price });
+  
+  const msg =
+    `🎂 *ORDER — Dulce Amorito Bakery*\n\n` +
+    `🌸 Item: ${name}${detail ? ' (' + detail + ')' : ''}\n` +
+    `💰 Price: $${price}\n\n` +
+    `¡Hola! I would like to order this item 🌸`;
+  openWA(msg);
 }
 
 // ── CAKE CONFIGURATOR ─────────────────────────────
@@ -310,18 +316,7 @@ function orderCake() {
   openWA(msg);
 }
 
-function addCakeToCart() {
-  const o = cakeOrder;
-  if (!o.size) { alert('Please select the size first'); return; }
-  pushToCart({
-    id: 'cake_' + Date.now(),
-    name: 'Custom Cake',
-    emoji: '🎂',
-    detail: `${o.size} · ${o.flavor || '—'} · ${o.color || '—'}`,
-    price: o.sizePrice
-  });
-  showToast('✅ Cake added to cart');
-}
+
 
 // ── CART ──────────────────────────────────────────
 function pushToCart(item) {
