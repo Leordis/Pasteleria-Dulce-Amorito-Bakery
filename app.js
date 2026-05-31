@@ -434,13 +434,25 @@ function renderTestimonials() {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('show');
-      } else {
-        entry.target.classList.remove('show');
+        observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  }, { threshold: 0.05 });
 
-  document.querySelectorAll('.testi-card').forEach(card => observer.observe(card));
+  const cards = document.querySelectorAll('.testi-card');
+  cards.forEach(card => observer.observe(card));
+
+  // Fallback: show immediately if already in viewport on load
+  setTimeout(() => {
+    cards.forEach(card => {
+      if (card.classList.contains('show')) return;
+      const rect = card.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        card.classList.add('show');
+        observer.unobserve(card);
+      }
+    });
+  }, 300);
 }
 
 // ── COUNTER ANIMATION ─────────────────────────────
