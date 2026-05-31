@@ -484,7 +484,6 @@ function initCounters() {
           clearInterval(parseInt(el.dataset.timer, 10));
           el.dataset.timer = "";
         }
-        el.textContent = '0';
       }
     });
   }, { threshold: 0.1 });
