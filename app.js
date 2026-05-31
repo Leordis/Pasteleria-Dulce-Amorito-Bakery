@@ -399,14 +399,33 @@ function sendContact() {
   const event = document.getElementById('cf-event').value;
   const date = document.getElementById('cf-date').value;
   const msg = document.getElementById('cf-msg').value.trim();
+  const statusDiv = document.getElementById('contact-status');
+
+  if (!name || !event || !date || !msg) {
+    statusDiv.textContent = '⚠️ Por favor, completa todos los campos para enviar tu mensaje.';
+    statusDiv.style.color = '#c0263d'; // Rojo
+    statusDiv.style.opacity = '1';
+    return;
+  }
+
   const text =
     `🎂 *Inquiry — Dulce Amorito Bakery*\n\n` +
-    `👤 Name: ${name || '—'}\n` +
-    `🎉 Event: ${event || '—'}\n` +
-    `📅 Date: ${date || '—'}\n\n` +
-    `💬 Message:\n${msg || '—'}\n\n` +
+    `👤 Name: ${name}\n` +
+    `🎉 Event: ${event}\n` +
+    `📅 Date: ${date}\n\n` +
+    `💬 Message:\n${msg}\n\n` +
     `¡Hola! I would like more information 🌸`;
+    
   openWA(text);
+
+  // Mostrar mensaje de éxito en verde por 5 segundos
+  statusDiv.textContent = '¡Listo! Tu mensaje está preparado en WhatsApp. Ábrelo y presiona Enviar para completar tu pedido 🎂';
+  statusDiv.style.color = '#2e7d32'; // Verde
+  statusDiv.style.opacity = '1';
+
+  setTimeout(() => {
+    statusDiv.style.opacity = '0';
+  }, 5000);
 }
 
 // ── TESTIMONIALS ──────────────────────────────────
