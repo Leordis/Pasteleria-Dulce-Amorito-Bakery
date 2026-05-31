@@ -15,82 +15,82 @@ const PRODUCTS = {
   artisan: [
     {
       id: 'a1', name: 'Milhojas', desc: 'Crispy puff pastry layers with pastry cream', emoji: '🥐', badge: 'Popular',
-      img: "Variedades de dulces /mil hojas/3558802C-34F5-407F-B25E-1779E4B5A472.PNG",
+      img: "Variedades%20de%20dulces%20/mil%20hojas/3558802C-34F5-407F-B25E-1779E4B5A472.PNG",
       sizes: [{ label: '5 ppl', price: 30 }, { label: '10 ppl', price: 50 }, { label: '20 ppl', price: 90 }]
     },
     {
       id: 'a2', name: 'Tres Leches de Frutas', desc: 'Fluffy sponge cake soaked in tres leches with fresh fruit', emoji: '🍰', badge: '⭐ Favorite',
-      img: "Variedades de dulces /tres leche/56002ACB-FB5B-4491-9B9C-A6BAB97BCEC3.PNG",
+      img: "Variedades%20de%20dulces%20/tres%20leche/56002ACB-FB5B-4491-9B9C-A6BAB97BCEC3.PNG",
       sizes: [{ label: '6" · 8 ppl', price: 45 }, { label: '8" · 15 ppl', price: 70 }, { label: '10" · 30 ppl', price: 95 }]
     },
     {
       id: 'a3', name: 'Churros (12 ct)', desc: 'Artisanal churros, crispy outside, soft inside', emoji: '🥐',
-      img: "Variedades de dulces /churros/churros.png", price: 25
+      img: "Variedades%20de%20dulces%20/churros/churros.png", price: 25
     },
     {
       id: 'a4', name: 'Flan', desc: 'Homemade flan with caramel, creamy and smooth', emoji: '🍮',
-      img: "Variedades de dulces /flan/IMG_9605.JPG", price: 20
+      img: "Variedades%20de%20dulces%20/flan/IMG_9605.JPG", price: 20
     },
     {
       id: 'a5', name: 'Chocoflan', desc: 'The perfect combo: flan + chocolate cake', emoji: '🍫',
-      img: "Variedades de dulces /choco Flan/IMG_9606 2.JPG", price: 40
+      img: "Variedades%20de%20dulces%20/choco%20Flan/IMG_9606%202.JPG", price: 40
     },
     {
       id: 'a6', name: 'Cheesecake', desc: 'Creamy cheesecake · Passion fruit or Strawberry', emoji: '🧁', badge: '2 flavors',
-      img: "Variedades de dulces /chescake de maracuya/IMG_9610.JPG", price: 40
+      img: "Variedades%20de%20dulces%20/chescake%20de%20maracuya/IMG_9610.JPG", price: 40
     },
     {
       id: 'a7', name: 'Pan de Jamón', desc: 'Artisanal bread filled with ham, olives, raisins, and bacon — traditional Venezuelan flavor', emoji: '🥖', badge: '🎄 Seasonal',
-      img: "Variedades de dulces /pan de jamon/IMG_9608.JPG",
+      img: "Variedades%20de%20dulces%20/pan%20de%20jamon/IMG_9608.JPG",
       sizes: [{ label: 'Small · 6 ppl', price: 18 }, { label: 'Med · 12 ppl', price: 28 }, { label: 'Large · 20 ppl', price: 38 }]
     },
   ],
   individual: [
     {
       id: 'i1', name: 'Passion Fruit Cheesecake', desc: '12 individual units, tropical passion fruit', emoji: '🍊',
-      img: "Variedades de dulces /INDIVIDUALES/CHIScake de maracuya/EDE70349-5BD5-4A5D-A898-5851659C0190.PNG", price: 45, unit: '12 ct'
+      img: "Variedades%20de%20dulces%20/INDIVIDUALES/CHIScake%20de%20maracuya/EDE70349-5BD5-4A5D-A898-5851659C0190.PNG", price: 45, unit: '12 ct'
     },
     {
       id: 'i2', name: 'Tres Leches Cake', desc: '12 individual portions of classic tres leches', emoji: '🍰',
-      img: "Variedades de dulces /INDIVIDUALES/torta de tres leche/68A2C58F-434B-4C70-B9C1-D4C24F40A673 2.PNG", price: 45, unit: '12 ct'
+      img: "Variedades%20de%20dulces%20/INDIVIDUALES/torta%20de%20tres%20leche/68A2C58F-434B-4C70-B9C1-D4C24F40A673%202.PNG", price: 45, unit: '12 ct'
     },
     {
       id: 'i3', name: 'Chocolate Cake', desc: '12 portions of moist chocolate cake', emoji: '🍫',
-      img: "Variedades de dulces /INDIVIDUALES/torta de chocolate/EAB0E20A-40F8-4575-AF05-F5C16EE93F16.PNG", price: 45, unit: '12 ct'
+      img: "Variedades%20de%20dulces%20/INDIVIDUALES/torta%20de%20chocolate/EAB0E20A-40F8-4575-AF05-F5C16EE93F16.PNG", price: 45, unit: '12 ct'
     },
     {
       id: 'i4', name: 'Mini Milhojas', desc: '12 crispy mini milhojas with cream', emoji: '🥐',
-      img: "Variedades de dulces /INDIVIDUALES/mini mil hojas/7271511A-4786-4348-983B-4C231B4D518B.PNG", price: 50, unit: '12 ct'
+      img: "Variedades%20de%20dulces%20/INDIVIDUALES/mini%20mil%20hojas/7271511A-4786-4348-983B-4C231B4D518B.PNG", price: 50, unit: '12 ct'
     },
     {
       id: 'i5', name: 'Flan / Quesillo', desc: '12 individual caramelized flans', emoji: '🍮',
-      img: "Variedades de dulces /INDIVIDUALES/flan quesillo/54828FFA-B50A-4B75-8D3A-F69881747830.PNG", price: 40, unit: '12 ct'
+      img: "Variedades%20de%20dulces%20/INDIVIDUALES/flan%20quesillo/54828FFA-B50A-4B75-8D3A-F69881747830.PNG", price: 40, unit: '12 ct'
     },
     {
       id: 'i6', name: 'Mini Merengón', desc: '12 mini merengones with chantilly cream', emoji: '☁️',
-      img: "Variedades de dulces /INDIVIDUALES/mini merengon/IMG_9623.JPG", price: 45, unit: '12 ct'
+      img: "Variedades%20de%20dulces%20/INDIVIDUALES/mini%20merengon/IMG_9623.JPG", price: 45, unit: '12 ct'
     },
     {
       id: 'i7', name: 'Tiramisú', desc: '12 portions of classic Italian tiramisú', emoji: '☕',
-      img: "Variedades de dulces /tiramisu/IMG_9611.JPG", price: 45, unit: '12 ct'
+      img: "Variedades%20de%20dulces%20/tiramisu/IMG_9611.JPG", price: 45, unit: '12 ct'
     },
     {
       id: 'i8', name: 'Macarons', desc: '12 French macarons in assorted flavors', emoji: '🎀',
-      img: "Variedades de dulces /INDIVIDUALES/macarones/IMG_9613.JPG", price: 30, unit: '12 ct'
+      img: "Variedades%20de%20dulces%20/INDIVIDUALES/macarones/IMG_9613.JPG", price: 30, unit: '12 ct'
     },
     {
       id: 'i9', name: 'Cake Pops', desc: '12 hand-decorated cake pops', emoji: '🍡',
-      img: "Variedades de dulces /INDIVIDUALES/cake pops/IMG_9621.JPG", price: 35, unit: '12 ct'
+      img: "Variedades%20de%20dulces%20/INDIVIDUALES/cake%20pops/IMG_9621.JPG", price: 35, unit: '12 ct'
     },
     {
       id: 'i10', name: 'Cupcakes', desc: '12 cupcakes decorated with buttercream', emoji: '🧁',
-      img: "Variedades de dulces /cup cake/653D8618-38F1-451E-B125-5B28BC51710E.PNG", price: 45, unit: '12 ct'
+      img: "Variedades%20de%20dulces%20/cup%20cake/653D8618-38F1-451E-B125-5B28BC51710E.PNG", price: 45, unit: '12 ct'
     },
   ],
   tortas: [
     {
       id: 't1', name: 'Custom Cake', desc: 'Designed 100% to your liking: flavor, filling, decor, and size', emoji: '🎂', badge: '⭐ Specialty',
-      img: "tortas personalisadas/torta-personalizada.png", price: 45, note: 'Price from · use configurator'
+      img: "tortas%20personalisadas/torta-personalizada.png", price: 45, note: 'Price from · use configurator'
     },
     {
       id: 't2', name: 'Wedding Cake', desc: 'Elegance and love in every tier · 2+ tiers, premium decor', emoji: '💒', badge: 'Exclusive',
@@ -98,19 +98,19 @@ const PRODUCTS = {
     },
     {
       id: 't3', name: 'Quinceañera Cake', desc: 'Dream design for your most special day', emoji: '👑',
-      img: "torta de quinceañera/IMG_8143.jpg", price: 95, note: 'Price from'
+      img: "torta%20de%20quinceañera/IMG_8143.jpg", price: 95, note: 'Price from'
     },
     {
       id: 't4', name: 'Birthday Cake', desc: 'Customized with your favorite colors, theme, and flavors', emoji: '🎉',
-      img: "tortas de cumpleaños/E7A91446-0112-4733-9F76-8190C6BACF87.PNG", price: 45, note: 'Price from'
+      img: "tortas%20de%20cumpleaños/E7A91446-0112-4733-9F76-8190C6BACF87.PNG", price: 45, note: 'Price from'
     },
     {
       id: 't5', name: 'Gender Reveal Cake', desc: 'Surprise everyone with the secret color inside the cake', emoji: '🎀',
-      img: "gender reveal cake/IMG_9630.JPG", price: 65, note: 'Price from'
+      img: "gender%20reveal%20cake/IMG_9630.JPG", price: 65, note: 'Price from'
     },
     {
       id: 't6', name: 'Dessert Table', desc: 'Full dessert table for your special event', emoji: '✨',
-      img: "disert table/mesa-postre.png", price: 150, note: 'Price from · contact us'
+      img: "disert%20table/mesa-postre.png", price: 150, note: 'Price from · contact us'
     },
   ]
 };
