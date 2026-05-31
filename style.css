@@ -1453,7 +1453,7 @@ footer span {
 }
 
 #wa-float {
-  bottom: 24px;
+  bottom: 100px;
   z-index: 997;
   width: 84px;
   height: 84px;
@@ -1538,7 +1538,7 @@ footer span {
 
 @media (max-width: 480px) {
   #wa-float {
-    bottom: 16px;
+    bottom: 85px;
     right: 16px;
     width: 72px;
     height: 72px;
