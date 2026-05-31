@@ -123,7 +123,12 @@ const TESTIMONIALS = [
 ];
 
 // ── STATE ─────────────────────────────────────────
-let cart = JSON.parse(localStorage.getItem('da_cart') || '[]');
+let cart = [];
+try {
+  cart = JSON.parse(localStorage.getItem('da_cart') || '[]');
+} catch (e) {
+  cart = [];
+}
 let currentTab = 'tortas';
 let cakeOrder = { size: '', sizePrice: 0, flavor: '', filling: '', deco: '', color: '', date: '' };
 
@@ -165,7 +170,7 @@ function renderCatalog(tab) {
 
 function buildCard(p, tab) {
   const hasSizes = p.sizes && p.sizes.length;
-  const sizeOpts = hasSizes ? `<select class="size-select" id="sel-${p.id}" onchange="updateCardPrice('${p.id}',this.value,${JSON.stringify(p.sizes).replace(/"/g, "'")})">
+  const sizeOpts = hasSizes ? `<select class="size-select" id="sel-${p.id}" onchange="updateCardPrice('${p.id}',this.value)">
     ${p.sizes.map((s, i) => `<option value="${i}">${s.label} · $${s.price}</option>`).join('')}
   </select>` : '';
 
@@ -175,7 +180,7 @@ function buildCard(p, tab) {
   return `<div class="product-card">
     <div class="card-img" style="background:#fdf8f5;display:flex;align-items:center;justify-content:center;">
       ${p.img
-      ? `<img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;border-radius:16px 16px 0 0;display:block;" onclick="openLightbox(${JSON.stringify(p.img).replace(/"/g, '&quot;')},${JSON.stringify(p.name).replace(/"/g, '&quot;')})" onerror="this.outerHTML='<div style=\\'text-align:center;padding:2rem;color:var(--gold-mid);font-family:serif;font-style:italic;\\'>Dulce Amorito</div>'"/>`
+      ? `<img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;border-radius:16px 16px 0 0;display:block;" onclick="openLightbox('${p.img}', '${p.name.replace(/'/g, "\\'")}')" onerror="this.outerHTML='<div style=\\'text-align:center;padding:2rem;color:var(--gold-mid);font-family:serif;font-style:italic;\\'>Dulce Amorito</div>'"/>`
       : `<div style='text-align:center;padding:2rem;color:var(--gold-mid);font-family:serif;font-style:italic;'>Dulce Amorito</div>`
     }
       ${p.badge ? `<span class="card-badge">${p.badge}</span>` : ''}
@@ -195,9 +200,16 @@ function buildCard(p, tab) {
   </div>`;
 }
 
-function updateCardPrice(id, idx, sizes) {
-  const s = typeof sizes === 'string' ? JSON.parse(sizes.replace(/'/g, '"')) : sizes;
-  document.getElementById('price-' + id).textContent = s[idx].price;
+function updateCardPrice(id, idx) {
+  let price = 0;
+  for (const tab in PRODUCTS) {
+    const p = PRODUCTS[tab].find(x => x.id === id);
+    if (p && p.sizes) {
+      price = p.sizes[idx].price;
+      break;
+    }
+  }
+  document.getElementById('price-' + id).textContent = price;
 }
 
 function addToCart(id, tab) {
@@ -478,6 +490,34 @@ function initCounters() {
   }, { threshold: 0.1 });
 
   counters.forEach(c => observer.observe(c));
+
+  // FIX: disparar manualmente si ya son visibles al cargar
+  setTimeout(() => {
+    counters.forEach(c => {
+      if (c.dataset.timer) return;
+      const rect = c.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        const target = parseInt(c.getAttribute('data-target'), 10);
+        const duration = target === 500 ? 2000 : 1500;
+        const intervalTime = 30;
+        const totalSteps = duration / intervalTime;
+        const increment = target / totalSteps;
+        let current = 0;
+        c.textContent = '0';
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            c.textContent = target;
+            clearInterval(timer);
+            c.dataset.timer = "";
+          } else {
+            c.textContent = Math.floor(current);
+          }
+        }, intervalTime);
+        c.dataset.timer = timer;
+      }
+    });
+  }, 300);
 }
 
 // ── MOBILE MENU ───────────────────────────────────
