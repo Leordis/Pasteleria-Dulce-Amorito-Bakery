@@ -153,9 +153,9 @@ document.addEventListener('DOMContentLoaded', () => {
     lastScrollY = currentScrollY;
   });
 
-  // Discount Popup timer (3 seconds)
+  // Discount Popup timer (5 seconds)
   if (!localStorage.getItem('dulcePopupShown')) {
-    setTimeout(showDiscountModal, 3000);
+    setTimeout(showDiscountModal, 5000);
   }
 });
 
