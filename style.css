@@ -1633,6 +1633,138 @@ footer span {
   }
 }
 
+/* ── DISCOUNT POPUP MODAL ── */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 5, 8, 0.7);
+  backdrop-filter: blur(8px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.modal-backdrop.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal-content {
+  background: var(--cream);
+  border: 2px solid #C9A84C;
+  border-radius: 24px;
+  width: 90%;
+  max-width: 450px;
+  padding: 3rem 2.2rem 2.2rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  position: relative;
+  text-align: center;
+  transform: scale(0.9);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.modal-backdrop.show .modal-content {
+  transform: scale(1);
+}
+
+.modal-close-x {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: var(--text);
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.modal-close-x:hover {
+  opacity: 1;
+}
+
+.modal-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  color: #C9A84C;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+  line-height: 1.25;
+}
+
+.modal-sub {
+  font-size: 0.92rem;
+  color: var(--text);
+  opacity: 0.85;
+  margin-bottom: 1.8rem;
+  line-height: 1.5;
+}
+
+.modal-form-group {
+  margin-bottom: 1.2rem;
+}
+
+.modal-form-group input {
+  width: 100%;
+  padding: 0.9rem 1.2rem;
+  border-radius: 50px;
+  border: 1px solid rgba(201, 168, 76, 0.4);
+  background: #fff;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.modal-form-group input:focus {
+  border-color: #8B1A1A;
+  box-shadow: 0 0 0 3px rgba(139, 26, 26, 0.1);
+}
+
+.btn-claim-discount {
+  width: 100%;
+  background: #8B1A1A;
+  color: #fff;
+  border: none;
+  padding: 0.95rem;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s;
+  box-shadow: 0 6px 20px rgba(139, 26, 26, 0.3);
+  margin-bottom: 1.2rem;
+}
+
+.btn-claim-discount:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(139, 26, 26, 0.4);
+  background: #a32222;
+}
+
+.link-no-thanks {
+  background: none;
+  border: none;
+  font-size: 0.8rem;
+  color: var(--text);
+  opacity: 0.6;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  display: inline-block;
+}
+
+.link-no-thanks:hover {
+  opacity: 1;
+  color: #8B1A1A;
+}
+
 @media (max-width: 480px) {
   #wa-float {
     bottom: 85px;

@@ -744,6 +744,25 @@
     })();
   </script>
   <script src="app.js?v=2"></script>
+  <!-- DISCOUNT POPUP MODAL -->
+  <div id="discount-modal" class="modal-backdrop">
+    <div class="modal-content">
+      <button class="modal-close-x" onclick="closeDiscountModal()" aria-label="Close modal">✕</button>
+      <div class="modal-header">
+        <h3 class="modal-title">🎂 Get 10% OFF your first order!</h3>
+        <p class="modal-sub">Subscribe to our newsletter and claim your special discount code.</p>
+      </div>
+      <form id="discount-form" onsubmit="claimDiscount(event)">
+        <div class="modal-form-group">
+          <input type="email" id="discount-email" placeholder="yourname@example.com" required />
+        </div>
+        <button type="submit" class="btn-claim-discount">
+          Claim My Discount
+        </button>
+      </form>
+      <button class="link-no-thanks" onclick="closeDiscountModal()">No thanks</button>
+    </div>
+  </div>
   <script src="https://code.tidio.co/rjinjezfpw9x3vngbvohegwpabhbj2b7.js" async></script>
 </body>
 

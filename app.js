@@ -152,6 +152,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     lastScrollY = currentScrollY;
   });
+
+  // Discount Popup timer (5 seconds)
+  if (!localStorage.getItem('discountClaimedOrClosed')) {
+    setTimeout(showDiscountModal, 5000);
+  }
 });
 
 // ── CATALOG ───────────────────────────────────────
@@ -678,4 +683,29 @@ let _swipeHandled = false;
 function handleLightboxClick() {
   if (_swipeHandled) return;
   closeLightbox();
+}
+
+// ── DISCOUNT POPUP MODAL ─────────────────────────
+function showDiscountModal() {
+  const modal = document.getElementById('discount-modal');
+  if (modal) {
+    modal.classList.add('show');
+  }
+}
+
+function closeDiscountModal() {
+  const modal = document.getElementById('discount-modal');
+  if (modal) {
+    modal.classList.remove('show');
+    localStorage.setItem('discountClaimedOrClosed', 'true');
+  }
+}
+
+function claimDiscount(e) {
+  e.preventDefault();
+  const emailInput = document.getElementById('discount-email');
+  if (emailInput && emailInput.value.trim()) {
+    alert('🎂 ¡Felicidades! Tu código de descuento del 10% es: FIRST10. Te hemos enviado un correo de confirmación 🌸');
+    closeDiscountModal();
+  }
 }
