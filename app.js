@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Discount Popup timer (5 seconds)
-  if (!localStorage.getItem('dulcePopupShown')) {
+  if (!localStorage.getItem('dulcePopup2')) {
     setTimeout(showDiscountModal, 5000);
   }
 });
@@ -705,7 +705,7 @@ function closeDiscountModal() {
   const modal = document.getElementById('discount-modal');
   if (modal) {
     modal.classList.remove('show');
-    localStorage.setItem('dulcePopupShown', 'true');
+    localStorage.setItem('dulcePopup2', 'true');
   }
 }
 
