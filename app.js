@@ -153,9 +153,9 @@ document.addEventListener('DOMContentLoaded', () => {
     lastScrollY = currentScrollY;
   });
 
-  // Discount Popup timer (5 seconds)
-  if (!localStorage.getItem('discountClaimedOrClosed')) {
-    setTimeout(showDiscountModal, 5000);
+  // Discount Popup timer (3 seconds)
+  if (!localStorage.getItem('dulcePopupShown')) {
+    setTimeout(showDiscountModal, 3000);
   }
 });
 
@@ -354,30 +354,38 @@ function updateCartUI() {
 
   // FAB count
   const badge = document.getElementById('cart-count');
-  badge.textContent = count;
-  badge.classList.toggle('hidden', count === 0);
+  if (badge) {
+    badge.textContent = count;
+    badge.classList.toggle('hidden', count === 0);
+  }
 
   // Total
-  document.getElementById('cart-total').textContent = '$' + total;
+  const totalEl = document.getElementById('cart-total');
+  if (totalEl) {
+    totalEl.textContent = '$' + total;
+  }
 
   // Items
   const container = document.getElementById('cart-items');
-  if (!count) {
-    container.innerHTML = `<div class="cart-empty"><span>🛒</span>Your cart is empty.<br/><small>Add products from the menu or build your cake.</small></div>`;
-    return;
-  }
-  container.innerHTML = cart.map(i => `
-    <div class="cart-item">
-      <span class="cart-item-icon">${i.emoji}</span>
-      <div class="cart-item-info">
-        <div class="cart-item-name">${i.name}</div>
-        ${i.detail ? `<div class="cart-item-detail">${i.detail}</div>` : ''}
+  if (container) {
+    if (!count) {
+      container.innerHTML = `<div class="cart-empty"><span>🛒</span>Your cart is empty.<br/><small>Add products from the menu or build your cake.</small></div>`;
+      return;
+    }
+    container.innerHTML = cart.map(i => `
+      <div class="cart-item">
+        <span class="cart-item-icon">${i.emoji}</span>
+        <div class="cart-item-info">
+          <div class="cart-item-name">${i.name}</div>
+          ${i.detail ? `<div class="cart-item-detail">${i.detail}</div>` : ''}
+        </div>
+        <span class="cart-item-price">$${i.price}</span>
+        <button class="cart-item-del" onclick="removeFromCart('${i.id}')" title="Eliminar">✕</button>
       </div>
-      <span class="cart-item-price">$${i.price}</span>
-      <button class="cart-item-del" onclick="removeFromCart('${i.id}')" title="Eliminar">✕</button>
-    </div>
-  `).join('');
+    `).join('');
+  }
 }
+
 
 function toggleCart() {
   const drawer = document.getElementById('cart-drawer');
@@ -697,7 +705,7 @@ function closeDiscountModal() {
   const modal = document.getElementById('discount-modal');
   if (modal) {
     modal.classList.remove('show');
-    localStorage.setItem('discountClaimedOrClosed', 'true');
+    localStorage.setItem('dulcePopupShown', 'true');
   }
 }
 
