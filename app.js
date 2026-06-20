@@ -94,11 +94,11 @@ const PRODUCTS = {
     },
     {
       id: 't2', name: 'Wedding Cake', desc: 'Elegance and love in every tier · 2+ tiers, premium decor', emoji: '💒', badge: 'Exclusive',
-      img: "bodas/7EF59F04-7AF3-4EA2-A5B7-491B6ECA9344.PNG", price: 185, note: 'Price from'
+      img: "bodas/7EF59F04-7AF3-4EA2-A5B7-491B6ECA9344.PNG", price: 145, note: 'Price from'
     },
     {
       id: 't3', name: 'Quinceañera Cake', desc: 'Dream design for your most special day', emoji: '👑',
-      img: "torta%20de%20quinceañera/IMG_8143.jpg", price: 185, note: 'Price from'
+      img: "torta%20de%20quinceañera/IMG_8143.jpg", price: 95, note: 'Price from'
     },
     {
       id: 't4', name: 'Birthday Cake', desc: 'Customized with your favorite colors, theme, and flavors', emoji: '🎉',
