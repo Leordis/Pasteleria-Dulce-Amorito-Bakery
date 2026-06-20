@@ -2,7 +2,7 @@
 const WA = '16893226891';
 
 const state = {
-  size:    { val: 'small', label: '6" · 8 personas',   price: 45 },
+  size:    { val: 'small single tier', label: '6" · 10-12 personas',   price: 65 },
   flavor:  { val: 'vanilla',        label: 'Vainilla' },
   filling: { val: 'chantilly cream',label: 'Chantilly' },
   deco:    { val: 'fresh flowers',  label: 'Flores frescas' },

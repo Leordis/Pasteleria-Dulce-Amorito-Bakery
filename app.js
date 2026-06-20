@@ -90,19 +90,19 @@ const PRODUCTS = {
   tortas: [
     {
       id: 't1', name: 'Custom Cake', desc: 'Designed 100% to your liking: flavor, filling, decor, and size', emoji: '🎂', badge: '⭐ Specialty',
-      img: "tortas%20personalisadas/torta-personalizada.png", price: 45, note: 'Price from · use configurator'
+      img: "tortas%20personalisadas/torta-personalizada.png", price: 65, note: 'Price from · use configurator'
     },
     {
       id: 't2', name: 'Wedding Cake', desc: 'Elegance and love in every tier · 2+ tiers, premium decor', emoji: '💒', badge: 'Exclusive',
-      img: "bodas/7EF59F04-7AF3-4EA2-A5B7-491B6ECA9344.PNG", price: 145, note: 'Price from'
+      img: "bodas/7EF59F04-7AF3-4EA2-A5B7-491B6ECA9344.PNG", price: 185, note: 'Price from'
     },
     {
       id: 't3', name: 'Quinceañera Cake', desc: 'Dream design for your most special day', emoji: '👑',
-      img: "torta%20de%20quinceañera/IMG_8143.jpg", price: 95, note: 'Price from'
+      img: "torta%20de%20quinceañera/IMG_8143.jpg", price: 185, note: 'Price from'
     },
     {
       id: 't4', name: 'Birthday Cake', desc: 'Customized with your favorite colors, theme, and flavors', emoji: '🎉',
-      img: "tortas%20de%20cumpleaños/E7A91446-0112-4733-9F76-8190C6BACF87.PNG", price: 45, note: 'Price from'
+      img: "tortas%20de%20cumpleaños/E7A91446-0112-4733-9F76-8190C6BACF87.PNG", price: 65, note: 'Price from'
     },
     {
       id: 't5', name: 'Gender Reveal Cake', desc: 'Surprise everyone with the secret color inside the cake', emoji: '🎀',
