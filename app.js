@@ -106,7 +106,7 @@ const PRODUCTS = {
     },
     {
       id: 't5', name: 'Gender Reveal Cake', desc: 'Surprise everyone with the secret color inside the cake', emoji: '🎀',
-      img: "gender%20reveal%20cake/IMG_9630.JPG", price: 65, note: 'Price from'
+      img: "gender%20reveal%20cake/gender-reveal-cake.png", price: 65, note: 'Price from'
     },
     {
       id: 't6', name: 'Dessert Table', desc: 'Full dessert table for your special event', emoji: '✨',
