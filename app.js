@@ -98,7 +98,7 @@ const PRODUCTS = {
     },
     {
       id: 't3', name: 'Quinceañera Cake', desc: 'Dream design for your most special day', emoji: '👑',
-      img: "torta%20de%20quinceañera/quinceanera-red-cake.png", price: 95, note: 'Price from'
+      img: "torta%20de%20quinceañera/quinceanera-red-cake.jpg", price: 95, note: 'Price from'
     },
     {
       id: 't4', name: 'Birthday Cake', desc: 'Customized with your favorite colors, theme, and flavors', emoji: '🎉',
