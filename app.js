@@ -196,7 +196,7 @@ function buildCard(p, tab) {
       ${sizeOpts}
       <div class="card-footer">
         ${tab === 'tortas'
-          ? `<div class="card-price" style="font-size:0.85rem;color:var(--gold)">Consultar precio</div>`
+          ? `<div style="font-family:'Cormorant Garamond', serif; font-size: 1.15rem; font-style: italic; color: var(--mid); font-weight: 500; letter-spacing: 0.02em; line-height: 1.2;">✨ Made con amor</div>`
           : `<div class="card-price">$<span id="price-${p.id}">${basePrice}</span> ${priceLabel}</div>`
         }
         ${tab === 'tortas' && p.id === 't1'
