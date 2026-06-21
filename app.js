@@ -195,7 +195,10 @@ function buildCard(p, tab) {
       <div class="card-desc">${p.desc}</div>
       ${sizeOpts}
       <div class="card-footer">
-        <div class="card-price">$<span id="price-${p.id}">${basePrice}</span> ${priceLabel}</div>
+        ${tab === 'tortas'
+          ? `<div class="card-price" style="font-size:0.85rem;color:var(--gold)">Consultar precio</div>`
+          : `<div class="card-price">$<span id="price-${p.id}">${basePrice}</span> ${priceLabel}</div>`
+        }
         ${tab === 'tortas' && p.id === 't1'
       ? `<button class="btn-add" onclick="document.getElementById('configurator').scrollIntoView({behavior:'smooth'})">🎂 Configure</button>`
       : `<button class="btn-add" onclick="addToCart('${p.id}','${tab}')">Order</button>`
@@ -233,7 +236,7 @@ function addToCart(id, tab) {
   const msg =
     `🎂 *ORDER — Dulce Amorito Bakery*\n\n` +
     `🌸 Item: ${name}${detail ? ' (' + detail + ')' : ''}\n` +
-    `💰 Price: $${price}\n\n` +
+    (tab !== 'tortas' ? `💰 Price: $${price}\n\n` : `\n`) +
     `¡Hola! I would like to order this item 🌸`;
   openWA(msg);
 }
@@ -302,7 +305,7 @@ function openNextStep(current) {
 }
 
 function updateTotal() {
-  document.getElementById('ps-total').textContent = '$' + cakeOrder.sizePrice;
+  document.getElementById('ps-total').textContent = 'Consultar';
 }
 
 function orderCake() {
@@ -315,9 +318,8 @@ function orderCake() {
     `🍯 Filling: ${o.filling || 'To be decided'}\n` +
     `🎨 Decoration: ${o.deco || 'To be decided'}\n` +
     `🖌️ Color: ${o.color || 'To be decided'}\n` +
-    `📅 Event Date: ${o.date || 'To be decided'}\n` +
-    `💰 Estimated Price: $${o.sizePrice}\n\n` +
-    `¡Hola! I would like to confirm this order 🌸`;
+    `📅 Event Date: ${o.date || 'To be decided'}\n\n` +
+    `¡Hola! I would like to confirm this order and get a quote 🌸`;
   openWA(msg);
 }
 

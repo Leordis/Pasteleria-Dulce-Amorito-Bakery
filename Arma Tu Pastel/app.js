@@ -186,9 +186,8 @@ function orderWhatsApp() {
     `🍰 Sabor: ${state.flavor.label}\n` +
     `🍯 Relleno: ${state.filling.label}\n` +
     `🎨 Decoración: ${state.deco.label}\n` +
-    `🎨 Color: ${state.color.label}\n` +
-    `💰 Precio desde: $${state.size.price}\n\n` +
-    `¡Hola! Me gustaría ordenar este pastel 🌸`;
+    `🎨 Color: ${state.color.label}\n\n` +
+    `¡Hola! Me gustaría cotizar y ordenar este pastel 🌸`;
 
   const a = document.createElement('a');
   a.href = `https://wa.me/${WA}?text=${encodeURIComponent(msg)}`;

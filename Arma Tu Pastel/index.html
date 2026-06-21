@@ -294,9 +294,8 @@ function orderWA() {
     `🍰 Sabor: ${cfg.flavor.label}\n` +
     `🍯 Relleno: ${cfg.filling.label}\n` +
     `🎨 Decoración: ${cfg.deco.label}\n` +
-    `🎨 Color: ${cfg.color.label}\n` +
-    `💰 Precio estimado desde: $${cfg.size.price || 65}\n\n` +
-    `¡Hola! Me gustaría ordenar este pastel 🌸`;
+    `🎨 Color: ${cfg.color.label}\n\n` +
+    `¡Hola! Me gustaría cotizar y ordenar este pastel 🌸`;
   const a = document.createElement('a');
   a.href = `https://wa.me/${WA}?text=${encodeURIComponent(msg)}`;
   a.target = '_blank'; document.body.appendChild(a); a.click(); document.body.removeChild(a);
