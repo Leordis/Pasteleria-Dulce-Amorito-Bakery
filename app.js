@@ -176,11 +176,8 @@ function renderCatalog(tab) {
 function buildCard(p, tab) {
   const hasSizes = p.sizes && p.sizes.length;
   const sizeOpts = hasSizes ? `<select class="size-select" id="sel-${p.id}" onchange="updateCardPrice('${p.id}',this.value)">
-    ${p.sizes.map((s, i) => `<option value="${i}">${s.label} · $${s.price}</option>`).join('')}
+    ${p.sizes.map((s, i) => `<option value="${i}">${s.label}</option>`).join('')}
   </select>` : '';
-
-  const basePrice = hasSizes ? p.sizes[0].price : p.price;
-  const priceLabel = p.unit ? `<span>per ${p.unit}</span>` : (p.note ? `<span style="font-size:.68rem">${p.note}</span>` : '');
 
   return `<div class="product-card">
     <div class="card-img" style="background:#fdf8f5;display:flex;align-items:center;justify-content:center;">
@@ -195,10 +192,7 @@ function buildCard(p, tab) {
       <div class="card-desc">${p.desc}</div>
       ${sizeOpts}
       <div class="card-footer">
-        ${tab === 'tortas'
-          ? `<div style="font-family:'Cormorant Garamond', serif; font-size: 1.15rem; font-style: italic; color: var(--mid); font-weight: 500; letter-spacing: 0.02em; line-height: 1.2;">✨ Made con amor</div>`
-          : `<div class="card-price">$<span id="price-${p.id}">${basePrice}</span> ${priceLabel}</div>`
-        }
+        <div style="font-family:'Cormorant Garamond', serif; font-size: 1.15rem; font-style: italic; color: var(--mid); font-weight: 500; letter-spacing: 0.02em; line-height: 1.2;">✨ Hecho con amor</div>
         ${tab === 'tortas' && p.id === 't1'
       ? `<button class="btn-add" onclick="document.getElementById('configurator').scrollIntoView({behavior:'smooth'})">🎂 Configure</button>`
       : `<button class="btn-add" onclick="addToCart('${p.id}','${tab}')">Order</button>`
@@ -217,7 +211,8 @@ function updateCardPrice(id, idx) {
       break;
     }
   }
-  document.getElementById('price-' + id).textContent = price;
+  const el = document.getElementById('price-' + id);
+  if (el) el.textContent = price;
 }
 
 function addToCart(id, tab) {
@@ -235,9 +230,8 @@ function addToCart(id, tab) {
   
   const msg =
     `🎂 *ORDER — Dulce Amorito Bakery*\n\n` +
-    `🌸 Item: ${name}${detail ? ' (' + detail + ')' : ''}\n` +
-    (tab !== 'tortas' ? `💰 Price: $${price}\n\n` : `\n`) +
-    `¡Hola! I would like to order this item 🌸`;
+    `🌸 Item: ${name}${detail ? ' (' + detail + ')' : ''}\n\n` +
+    `¡Hola! Me gustaría cotizar y ordenar este producto 🌸`;
   openWA(msg);
 }
 
@@ -352,7 +346,6 @@ function saveCart() {
 
 function updateCartUI() {
   const count = cart.length;
-  const total = cart.reduce((s, i) => s + (i.price || 0), 0);
 
   // FAB count
   const badge = document.getElementById('cart-count');
@@ -364,7 +357,7 @@ function updateCartUI() {
   // Total
   const totalEl = document.getElementById('cart-total');
   if (totalEl) {
-    totalEl.textContent = '$' + total;
+    totalEl.textContent = 'Consultar';
   }
 
   // Items
@@ -381,7 +374,6 @@ function updateCartUI() {
           <div class="cart-item-name">${i.name}</div>
           ${i.detail ? `<div class="cart-item-detail">${i.detail}</div>` : ''}
         </div>
-        <span class="cart-item-price">$${i.price}</span>
         <button class="cart-item-del" onclick="removeFromCart('${i.id}')" title="Eliminar">✕</button>
       </div>
     `).join('');
@@ -398,13 +390,11 @@ function toggleCart() {
 
 function checkoutWhatsApp() {
   if (!cart.length) { alert('⚠️ Your cart is empty'); return; }
-  const total = cart.reduce((s, i) => s + (i.price || 0), 0);
-  const lines = cart.map(i => `• ${i.name}${i.detail ? ' (' + i.detail + ')' : ''} — $${i.price}`).join('\n');
+  const lines = cart.map(i => `• ${i.name}${i.detail ? ' (' + i.detail + ')' : ''}`).join('\n');
   const msg =
     `🎂 *ORDER — Dulce Amorito Bakery*\n\n` +
     `📋 My order:\n${lines}\n\n` +
-    `💰 Estimated Total: $${total}\n\n` +
-    `¡Hola! I would like to confirm this order 🌸`;
+    `¡Hola! Me gustaría cotizar este pedido 🌸`;
   openWA(msg);
 }
 
