@@ -2,11 +2,11 @@
 const WA = '16893226891';
 
 const state = {
-  size:    { val: 'small single tier', label: '6" · 10-12 personas',   price: 65 },
-  flavor:  { val: 'vanilla',        label: 'Vainilla' },
-  filling: { val: 'chantilly cream',label: 'Chantilly' },
-  deco:    { val: 'fresh flowers',  label: 'Flores frescas' },
-  color:   { val: 'white and blush pink', label: 'Blanco / Rosa' },
+  size: { val: 'small single tier', label: '6" · 10-12 personas', price: 65 },
+  flavor: { val: 'vanilla', label: 'Vainilla' },
+  filling: { val: 'chantilly cream', label: 'Chantilly' },
+  deco: { val: 'fresh flowers', label: 'Flores frescas' },
+  color: { val: 'white and blush pink', label: 'Blanco / Rosa' },
 };
 
 const imageCache = {};
@@ -16,9 +16,9 @@ let generating = false;
 // ── PROMPT ────────────────────────────────────────
 function buildPrompt() {
   const sizeMap = {
-    small:  'elegant single layer artisan cake',
+    small: 'elegant single layer artisan cake',
     medium: 'beautiful two layer artisan cake',
-    large:  'impressive three layer artisan cake',
+    large: 'impressive three layer artisan cake',
     tiered: 'stunning three tier wedding cake',
   };
   return [
@@ -54,12 +54,12 @@ function pick(btn, field) {
   btn.closest('.chips').querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
   btn.classList.add('active');
 
-  const val   = btn.dataset.val;
+  const val = btn.dataset.val;
   const label = btn.textContent.trim().replace(/^[\p{Emoji}\s]+/u, '').trim();
 
   if (field === 'size') {
     state.size = { val, label: label, price: +btn.dataset.price };
-    document.getElementById('s-size').textContent  = label;
+    document.getElementById('s-size').textContent = label;
     document.getElementById('price-val').textContent = btn.dataset.price;
   } else if (field === 'flavor') {
     state.flavor = { val, label };
@@ -124,7 +124,7 @@ function loadImage(url, cacheKey) {
   const img = document.getElementById('cake-img');
 
   // Track loading steps
-  const steps = ['Construyendo prompt…','Enviando a Flux AI…','Procesando imagen…','Finalizando detalles…'];
+  const steps = ['Construyendo prompt…', 'Enviando a Flux AI…', 'Procesando imagen…', 'Finalizando detalles…'];
   let si = 0;
   const stepEl = document.getElementById('loading-step');
   const interval = setInterval(() => {
@@ -159,8 +159,8 @@ function updatePromptDisplay(prompt) {
 // ── LOADING STATE ─────────────────────────────────
 function setLoading(show, msg = '') {
   const overlay = document.getElementById('loading-overlay');
-  const btn     = document.getElementById('btn-gen');
-  const stepEl  = document.getElementById('loading-step');
+  const btn = document.getElementById('btn-gen');
+  const stepEl = document.getElementById('loading-step');
 
   overlay.classList.toggle('show', show);
   btn.disabled = show;
@@ -174,7 +174,7 @@ function setLoading(show, msg = '') {
   }
 }
 
-function onImageLoad()  { setLoading(false); generating = false; }
+function onImageLoad() { setLoading(false); generating = false; }
 function onImageError() { setLoading(false); generating = false; }
 
 // ── WHATSAPP ──────────────────────────────────────
@@ -228,8 +228,8 @@ function initParticles() {
     const p = document.createElement('div');
     p.className = 'particle';
     const sz = Math.random() * 3 + 1;
-    p.style.cssText = `width:${sz}px;height:${sz}px;left:${Math.random()*100}%;` +
-      `animation-duration:${Math.random()*12+8}s;animation-delay:${Math.random()*8}s;`;
+    p.style.cssText = `width:${sz}px;height:${sz}px;left:${Math.random() * 100}%;` +
+      `animation-duration:${Math.random() * 12 + 8}s;animation-delay:${Math.random() * 8}s;`;
     c.appendChild(p);
   }
 }
