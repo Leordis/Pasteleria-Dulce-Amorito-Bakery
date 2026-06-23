@@ -11,6 +11,26 @@ function openWA(msg) {
   document.body.removeChild(a);
 }
 
+function cleanText(str) {
+  if (!str) return '';
+  try {
+    // Eliminar emojis y pictogramas usando propiedades Unicode modernas construidas dinámicamente
+    // para evitar errores de sintaxis en tiempo de compilación/parseo en navegadores antiguos.
+    str = str.replace(new RegExp('\\p{Emoji_Presentation}', 'gu'), '')
+             .replace(new RegExp('\\p{Extended_Pictographic}', 'gu'), '')
+             .replace(new RegExp('\\p{Emoji}', 'gu'), '');
+  } catch (e) {
+    // Fallback para navegadores más antiguos
+    str = str.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, '');
+  }
+  return str
+    .replace(/[\u2600-\u27BF]/g, '')
+    .replace(/[\u2300-\u23FF]/g, '')
+    .replace(/[•✦]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 const PRODUCTS = {
   artisan: [
     {
@@ -229,9 +249,9 @@ function addToCart(id, tab) {
   }
   
   const msg =
-    `🎂 *ORDER — Dulce Amorito Bakery*\n\n` +
-    `🌸 Item: ${name}${detail ? ' (' + detail + ')' : ''}\n\n` +
-    `¡Hola! Me gustaría cotizar y ordenar este producto 🌸`;
+    `*ORDER — Dulce Amorito Bakery*\n\n` +
+    `- Item: ${cleanText(name)}${detail ? ' (' + cleanText(detail) + ')' : ''}\n\n` +
+    `¡Hola! Me gustaría cotizar y ordenar este producto.`;
   openWA(msg);
 }
 
@@ -244,10 +264,11 @@ function toggleStep(n) {
 function pickSize(btn, label, price) {
   document.querySelectorAll('#cs1 .chip').forEach(c => c.classList.remove('sel'));
   btn.classList.add('sel');
-  cakeOrder.size = label;
+  const cleanLabel = cleanText(label);
+  cakeOrder.size = cleanLabel;
   cakeOrder.sizePrice = price;
-  document.getElementById('sv1').textContent = label.split('–')[0].trim();
-  document.getElementById('ps-size').textContent = label;
+  document.getElementById('sv1').textContent = cleanLabel.split('–')[0].trim();
+  document.getElementById('ps-size').textContent = cleanLabel;
   updateTotal();
   openNextStep(1);
 }
@@ -256,7 +277,7 @@ function pick(btn, field, svId) {
   const parent = btn.closest('.step-opts');
   parent.querySelectorAll('.chip').forEach(c => c.classList.remove('sel'));
   btn.classList.add('sel');
-  const val = btn.textContent.trim();
+  const val = cleanText(btn.textContent.trim());
   cakeOrder[field] = val;
   document.getElementById(svId).textContent = val.substring(0, 18);
   // update preview
@@ -304,16 +325,24 @@ function updateTotal() {
 
 function orderCake() {
   const o = cakeOrder;
-  if (!o.size) { alert('⚠️ Please select the size of your cake first'); return; }
+  if (!o.size) { alert('Please select the size of your cake first'); return; }
+  
+  const size = cleanText(o.size);
+  const flavor = cleanText(o.flavor || 'To be decided');
+  const filling = cleanText(o.filling || 'To be decided');
+  const deco = cleanText(o.deco || 'To be decided');
+  const color = cleanText(o.color || 'To be decided');
+  const date = cleanText(o.date || 'To be decided');
+
   const msg =
-    `🎂 *CAKE ORDER — Dulce Amorito Bakery*\n\n` +
-    `📏 Size: ${o.size}\n` +
-    `🍰 Flavor: ${o.flavor || 'To be decided'}\n` +
-    `🍯 Filling: ${o.filling || 'To be decided'}\n` +
-    `🎨 Decoration: ${o.deco || 'To be decided'}\n` +
-    `🖌️ Color: ${o.color || 'To be decided'}\n` +
-    `📅 Event Date: ${o.date || 'To be decided'}\n\n` +
-    `¡Hola! I would like to confirm this order and get a quote 🌸`;
+    `*CAKE ORDER — Dulce Amorito Bakery*\n\n` +
+    `- Size: ${size}\n` +
+    `- Flavor: ${flavor}\n` +
+    `- Filling: ${filling}\n` +
+    `- Decoration: ${deco}\n` +
+    `- Color: ${color}\n` +
+    `- Event Date: ${date}\n\n` +
+    `¡Hola! I would like to confirm this order and get a quote.`;
   openWA(msg);
 }
 
@@ -389,12 +418,12 @@ function toggleCart() {
 }
 
 function checkoutWhatsApp() {
-  if (!cart.length) { alert('⚠️ Your cart is empty'); return; }
-  const lines = cart.map(i => `• ${i.name}${i.detail ? ' (' + i.detail + ')' : ''}`).join('\n');
+  if (!cart.length) { alert('Your cart is empty'); return; }
+  const lines = cart.map(i => `- ${cleanText(i.name)}${i.detail ? ' (' + cleanText(i.detail) + ')' : ''}`).join('\n');
   const msg =
-    `🎂 *ORDER — Dulce Amorito Bakery*\n\n` +
-    `📋 My order:\n${lines}\n\n` +
-    `¡Hola! Me gustaría cotizar este pedido 🌸`;
+    `*ORDER — Dulce Amorito Bakery*\n\n` +
+    `My order:\n${lines}\n\n` +
+    `¡Hola! Me gustaría cotizar este pedido.`;
   openWA(msg);
 }
 
@@ -407,24 +436,28 @@ function sendContact() {
   const statusDiv = document.getElementById('contact-status');
 
   if (!name || !event || !date || !msg) {
-    statusDiv.textContent = '⚠️ Por favor, completa todos los campos para enviar tu mensaje.';
+    statusDiv.textContent = 'Por favor, completa todos los campos para enviar tu mensaje.';
     statusDiv.style.color = '#c0263d'; // Rojo
     statusDiv.style.opacity = '1';
     return;
   }
 
+  const cleanName = cleanText(name);
+  const cleanEvent = cleanText(event);
+  const cleanMsg = cleanText(msg);
+
   const text =
-    `🎂 *Inquiry — Dulce Amorito Bakery*\n\n` +
-    `👤 Name: ${name}\n` +
-    `🎉 Event: ${event}\n` +
-    `📅 Date: ${date}\n\n` +
-    `💬 Message:\n${msg}\n\n` +
-    `¡Hola! I would like more information 🌸`;
+    `*Inquiry — Dulce Amorito Bakery*\n\n` +
+    `- Name: ${cleanName}\n` +
+    `- Event: ${cleanEvent}\n` +
+    `- Date: ${date}\n\n` +
+    `Message:\n${cleanMsg}\n\n` +
+    `¡Hola! I would like more information.`;
     
   openWA(text);
 
   // Mostrar mensaje de éxito en verde por 5 segundos
-  statusDiv.textContent = '¡Listo! Tu mensaje está preparado en WhatsApp. Ábrelo y presiona Enviar para completar tu pedido 🎂';
+  statusDiv.textContent = '¡Listo! Tu mensaje está preparado en WhatsApp. Ábrelo y presiona Enviar para completar tu pedido.';
   statusDiv.style.color = '#2e7d32'; // Verde
   statusDiv.style.opacity = '1';
 

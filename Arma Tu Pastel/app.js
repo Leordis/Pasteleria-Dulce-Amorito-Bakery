@@ -55,7 +55,7 @@ function pick(btn, field) {
   btn.classList.add('active');
 
   const val = btn.dataset.val;
-  const label = btn.textContent.trim().replace(/^[\p{Emoji}\s]+/u, '').trim();
+  const label = cleanText(btn.textContent.trim());
 
   if (field === 'size') {
     state.size = { val, label: label, price: +btn.dataset.price };
@@ -178,16 +178,42 @@ function onImageLoad() { setLoading(false); generating = false; }
 function onImageError() { setLoading(false); generating = false; }
 
 // ── WHATSAPP ──────────────────────────────────────
+function cleanText(str) {
+  if (!str) return '';
+  try {
+    // Eliminar emojis y pictogramas usando propiedades Unicode modernas construidas dinámicamente
+    // para evitar errores de sintaxis en tiempo de compilación/parseo en navegadores antiguos.
+    str = str.replace(new RegExp('\\p{Emoji_Presentation}', 'gu'), '')
+             .replace(new RegExp('\\p{Extended_Pictographic}', 'gu'), '')
+             .replace(new RegExp('\\p{Emoji}', 'gu'), '');
+  } catch (e) {
+    // Fallback para navegadores más antiguos
+    str = str.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, '');
+  }
+  return str
+    .replace(/[\u2600-\u27BF]/g, '')
+    .replace(/[\u2300-\u23FF]/g, '')
+    .replace(/[•✦]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 function orderWhatsApp() {
+  const size = cleanText(state.size.label);
+  const flavor = cleanText(state.flavor.label);
+  const filling = cleanText(state.filling.label);
+  const deco = cleanText(state.deco.label);
+  const color = cleanText(state.color.label);
+
   const msg =
-    `🎂 *PEDIDO — Dulce Amorito Bakery*\n\n` +
-    `✦ Configurado con el Lab IA:\n\n` +
-    `📏 Tamaño: ${state.size.label}\n` +
-    `🍰 Sabor: ${state.flavor.label}\n` +
-    `🍯 Relleno: ${state.filling.label}\n` +
-    `🎨 Decoración: ${state.deco.label}\n` +
-    `🎨 Color: ${state.color.label}\n\n` +
-    `¡Hola! Me gustaría cotizar y ordenar este pastel 🌸`;
+    `*PEDIDO — Dulce Amorito Bakery*\n\n` +
+    `Configurado con el Lab IA:\n\n` +
+    `- Tamaño: ${size}\n` +
+    `- Sabor: ${flavor}\n` +
+    `- Relleno: ${filling}\n` +
+    `- Decoración: ${deco}\n` +
+    `- Color: ${color}\n\n` +
+    `¡Hola! Me gustaría cotizar y ordenar este pastel.`;
 
   const a = document.createElement('a');
   a.href = `https://wa.me/${WA}?text=${encodeURIComponent(msg)}`;
