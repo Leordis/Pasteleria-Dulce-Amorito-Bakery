@@ -181,11 +181,8 @@ function onImageError() { setLoading(false); generating = false; }
 function cleanText(str) {
   if (!str) return '';
   try {
-    // Eliminar emojis y pictogramas usando propiedades Unicode modernas construidas dinámicamente
-    // para evitar errores de sintaxis en tiempo de compilación/parseo en navegadores antiguos.
     str = str.replace(new RegExp('\\p{Emoji_Presentation}', 'gu'), '')
-             .replace(new RegExp('\\p{Extended_Pictographic}', 'gu'), '')
-             .replace(new RegExp('\\p{Emoji}', 'gu'), '');
+             .replace(new RegExp('\\p{Extended_Pictographic}', 'gu'), '');
   } catch (e) {
     // Fallback para navegadores más antiguos
     str = str.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, '');
