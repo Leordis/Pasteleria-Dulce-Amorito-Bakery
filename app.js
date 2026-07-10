@@ -261,7 +261,7 @@ function toggleStep(n) {
 function pickSize(btn, label, price) {
   document.querySelectorAll('#cs1 .chip').forEach(c => c.classList.remove('sel'));
   btn.classList.add('sel');
-  const cleanLabel = cleanText(label);
+  const cleanLabel = cleanText(btn.textContent.trim());
   cakeOrder.size = cleanLabel;
   cakeOrder.sizePrice = price;
   document.getElementById('sv1').textContent = cleanLabel.split('–')[0].trim();
