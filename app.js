@@ -107,7 +107,7 @@ const PRODUCTS = {
   tortas: [
     {
       id: 't1', name: 'Custom Cake', desc: 'Designed 100% to your liking: flavor, filling, decor, and size', emoji: '🎂', badge: '⭐ Specialty',
-      img: "tortas%20personalisadas/torta-personalizada.png", price: 65, note: 'Price from · use configurator'
+      img: "imagenes/IMG_9756.jpeg", imgStyle: "object-position: center 60%;", price: 65, note: 'Price from · use configurator'
     },
     {
       id: 't2', name: 'Wedding Cake', desc: 'Elegance and love in every tier · 2+ tiers, premium decor', emoji: '💒', badge: 'Exclusive',
@@ -199,7 +199,7 @@ function buildCard(p, tab) {
   return `<div class="product-card">
     <div class="card-img" style="background:#fdf8f5;display:flex;align-items:center;justify-content:center;">
       ${p.img
-      ? `<img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;border-radius:16px 16px 0 0;display:block;" onclick="openLightbox('${p.img}', '${p.name.replace(/'/g, "\\'")}')" onerror="this.outerHTML='<div style=\\'text-align:center;padding:2rem;color:var(--gold-mid);font-family:serif;font-style:italic;\\'>Dulce Amorito</div>'"/>`
+      ? `<img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;border-radius:16px 16px 0 0;display:block;${p.imgStyle || ''}" onclick="openLightbox('${p.img}', '${p.name.replace(/'/g, "\\'")}')" onerror="this.outerHTML='<div style=\\'text-align:center;padding:2rem;color:var(--gold-mid);font-family:serif;font-style:italic;\\'>Dulce Amorito</div>'"/>`
       : `<div style='text-align:center;padding:2rem;color:var(--gold-mid);font-family:serif;font-style:italic;'>Dulce Amorito</div>`
     }
       ${p.badge ? `<span class="card-badge">${p.badge}</span>` : ''}
