@@ -562,6 +562,8 @@ function showToast(msg) {
 
 // ── LIGHTBOX + GALLERY NAVIGATION ─────────────────
 const GALLERY_IMGS = [
+  'imagenes/IMG_8934.jpeg', 'imagenes/IMG_9346.jpeg', 'imagenes/IMG_9412.jpeg',
+  'imagenes/IMG_9756.jpeg',
   'imagenes/dulce-1.png', 'imagenes/dulce-2.png', 'imagenes/dulce-3.png',
   'imagenes/dulce-4.png', 'imagenes/dulce-5.png', 'imagenes/dulce-6.png',
   'imagenes/dulce-7.png', 'imagenes/dulce-8.png', 'imagenes/dulce-9.png',
