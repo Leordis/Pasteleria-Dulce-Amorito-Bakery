@@ -107,7 +107,7 @@ const PRODUCTS = {
   tortas: [
     {
       id: 't1', name: 'Custom Cake', desc: 'Designed 100% to your liking: flavor, filling, decor, and size', emoji: '🎂', badge: '⭐ Specialty',
-      img: "imagenes/IMG_9756.jpeg", imgStyle: "object-position: center 60%;", price: 65, note: 'Price from · use configurator'
+      img: "imagenes/IMG_9756.jpeg", imgStyle: "transform: scale(1.4); object-position: center 48%;", price: 65, note: 'Price from · use configurator'
     },
     {
       id: 't2', name: 'Wedding Cake', desc: 'Elegance and love in every tier · 2+ tiers, premium decor', emoji: '💒', badge: 'Exclusive',
